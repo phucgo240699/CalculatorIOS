@@ -147,7 +147,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func modBtn(_ sender: Any) {
-        
+        if ( a == nil && b == nil && c == nil ) {
+            
+        }
+        else if ( a != nil && b == nil && c == nil ) {
+            a! /= 100
+            lblDisplay.text = String(a!)
+        }
+        else if ( a != nil && b != nil && c == nil ) {
+            b! /= 100
+            lblDisplay.text = String(b!)
+        }
+        else if ( a != nil && b != nil && c != nil ) {
+            c! /= 100
+            lblDisplay.text = String(c!)
+        }
     }
     
     @IBAction func posNavBtn(_ sender: Any) {
