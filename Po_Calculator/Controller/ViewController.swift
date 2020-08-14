@@ -40,6 +40,27 @@ struct Number {
 }
 
 class ViewController: UIViewController {
+    var listExamples: [Example] = []
+
+
+    func GetInformation(from path: String) {
+        guard let url = Bundle.main.url(forResource: path, withExtension: "json") else { fatalError() }
+        
+        do {
+            let rawData = try Data(contentsOf: url)
+            
+            let data = try JSONDecoder().decode([Example].self, from: rawData)
+                
+            for example in data {
+                print(example)
+                listExamples<-example
+            }
+            print(listExamples)
+        } catch {
+            print(error)
+        }
+    }
+    
     func calculate(_ x: Double, _ y: Double, paraOperator: Operation) -> Double {
         switch paraOperator {
         case .add:
@@ -289,14 +310,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        lblDisplay.text = "0"
         
-        if self.view.frame.width > self.view.frame.height {
-            kbStackView.widthAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
+        if lblDisplay != nil {
+            lblDisplay.text = "0"
         }
         else {
-            kbStackView.widthAnchor.constraint(equalToConstant: self.view.frame.height * 0.7).isActive = true
+            print("????????????????????????????/")
+            print("????????????????????????????/")
+            print("????????????????????????????/")
+            print("????????????????????????????/")
+            print("????????????????????????????/")
+            print("????????????????????????????/")
         }
+        
+//        if self.view.frame.width > self.view.frame.height {
+//            kbStackView.widthAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true
+//        }
+//        else {
+//            kbStackView.widthAnchor.constraint(equalToConstant: self.view.frame.height * 0.7).isActive = true
+//        }
 
     }
 

@@ -12,3 +12,10 @@ extension String {
         return NumberFormatter().number(from: self)?.doubleValue
     }
 }
+
+infix operator <- : AssignmentPrecedence
+extension Array where Element == Example {
+    static func <- (left: inout Array, right: Element) {
+        left.append(right)
+    }
+}
