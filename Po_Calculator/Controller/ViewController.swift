@@ -170,12 +170,6 @@ class ViewController: UIViewController {
                 a = 0
                 lblDisplay.text = "-" + String(a!)
             }
-//            else if firstOperator != .null && secondOperator == .null {
-//
-//            }
-//            else if firstOperator != .null && secondOperator != .null {
-//
-//            }
         }
             
         else if ( a != nil && b == nil && c == nil ){
@@ -187,17 +181,9 @@ class ViewController: UIViewController {
                 b = 0
                 lblDisplay.text = "-" + String(b!)
             }
-//            else if firstOperator != .null && secondOperator != .null {
-//                
-//            }
-
-            
         }
             
         else if ( a != nil && b != nil && c == nil ){
-//            if firstOperator == .null && secondOperator == .null {
-//
-//            }
             if firstOperator != .null && secondOperator == .null {
                 b! *= -1
                 lblDisplay.text = "-" + String(b!)
@@ -209,12 +195,6 @@ class ViewController: UIViewController {
         }
             
         else if ( a != nil && b != nil && c != nil ){
-//            if firstOperator == .null && secondOperator == .null {
-//
-//            }
-//            else if firstOperator != .null && secondOperator == .null {
-//
-//            }
             if firstOperator != .null && secondOperator != .null {
                 c! *= -1
                 lblDisplay.text = String(c!)

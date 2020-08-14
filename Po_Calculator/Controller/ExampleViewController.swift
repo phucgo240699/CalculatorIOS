@@ -1,22 +1,14 @@
 //
-//  ExampleView.swift
+//  ExampleViewController.swift
 //  Po_Calculator
 //
-//  Created by Phúc Lý on 8/13/20.
+//  Created by Phúc Lý on 8/14/20.
 //  Copyright © 2020 Phúc Lý. All rights reserved.
 //
 
 import UIKit
 
-class ExampleView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+class ExampleViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var listExamples: [Example] = []
@@ -33,58 +25,43 @@ class ExampleView: UIView {
             for example in data {
                 listExamples<-example
             }
-            print(listExamples)
+            print(listExamples.count)
             tableView.reloadData()
         } catch {
             print(error)
         }
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        
-        let _ = loadViewFromNib()
-        GetInformation(from: "example")
-        
+        // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "ExampleCellTableViewCell", bundle: nil), forCellReuseIdentifier: "ExampleCell")
+        GetInformation(from: "example")
     }
 
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle.init(for: type(of: self))
-        
-        let nib = UINib(nibName: "ExampleView", bundle: bundle)
-        
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        
-        view.frame = bounds
-        view.autoresizingMask = [ UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight ]
-        
-        addSubview(view)
-        return view
-    }
 }
 
-extension ExampleView : UITableViewDelegate, UITableViewDataSource {
-    
+
+extension ExampleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listExamples.count
-    }
-    
+            return listExamples.count
+        }
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExampleCell") as! ExampleCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExampleCell", for: indexPath) as! ExampleCellTableViewCell
         
         let example = listExamples[indexPath.row]
-        
+
         cell.lblNameValue.text = example.name
         cell.lblDobValue.text = example.dob
         cell.lblCompanyValue.text = example.company
         cell.lblAddressValue.text = example.address
         cell.lblFoundedValue.text = example.founded
-        
+
         // Validate founders array, and convert to string
         var founders:String = ""
         if let numberOfFounders = example.co_founders?.count {
@@ -94,16 +71,33 @@ extension ExampleView : UITableViewDelegate, UITableViewDataSource {
                         founders += founder + ", "
                     }
                 }
-                if let founder = example.co_founders?[numberOfFounders-1] {
-                    founders += founder
+                if let founder = example.co_founders?[numberOfFounders-1]{
+                        founders += founder
                 }
             }
         }
-        
-        
+
+
         cell.lblFoundersValue.text = founders
         
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Bundle identifier
+        if indexPath.row % 2 == 0 {
+            if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailExample") as? DetailExampleViewController {
+                detailVC.modalPresentationStyle = .popover
+                present(detailVC, animated: true, completion: nil)
+            }
+               
+        }
+
+        // Segue
+        else {
+            performSegue(withIdentifier: "moveToDetailExample", sender: self)
+        }
+    }
 }
