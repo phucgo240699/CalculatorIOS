@@ -77,27 +77,58 @@ class ViewController: UIViewController {
     
     @IBAction func numberPressed(_ sender: RoundedButton) {
         if ( a == nil && b == nil && c == nil ){
-            lblDisplay.text = String(sender.tag)
-            a = lblDisplay.text?.toDouble()
+            if sender.tag != 0 {
+                lblDisplay.text = String(sender.tag)
+                a = lblDisplay.text?.toDouble()
+            }
         }
         else if ( a != nil && b == nil && c == nil ){
             if firstOperator == .null {
-                lblDisplay.text! += String(sender.tag)
-                a = lblDisplay.text?.toDouble()
+                if (lblDisplay.text?.include("-"))! {
+                    a = lblDisplay.text?.toDouble()
+                    a! -= Double(sender.tag)
+                    lblDisplay.text = String(a!)
+                }
+                else {
+                    lblDisplay.text! += String(sender.tag)
+                    a = lblDisplay.text?.toDouble()
+                }
             }
             else if firstOperator != .null {
-                lblDisplay.text = String(sender.tag)
-                b = lblDisplay.text?.toDouble()
+                if (lblDisplay.text?.include("-"))! {
+                    b = lblDisplay.text?.toDouble()
+                    b! -= Double(sender.tag)
+                    lblDisplay.text = String(b!)
+                }
+                else {
+                    lblDisplay.text = String(sender.tag)
+                    b = lblDisplay.text?.toDouble()
+                }
             }
         }
         else if ( a != nil && b != nil && c == nil ){
             if secondOperator == .null {
-                lblDisplay.text! += String(sender.tag)
-                b = lblDisplay.text?.toDouble()
+                if (lblDisplay.text?.include("-"))! {
+                    b = lblDisplay.text?.toDouble()
+                    b! -= Double(sender.tag)
+                    lblDisplay.text = String(b!)
+                }
+                else {
+                    lblDisplay.text! += String(sender.tag)
+                    b = lblDisplay.text?.toDouble()
+                }
+                
             }
             else {
-                lblDisplay.text = String(sender.tag)
-                c = lblDisplay.text?.toDouble()
+                if (lblDisplay.text?.include("-"))! {
+                    c = lblDisplay.text?.toDouble()
+                    c! -= Double(sender.tag)
+                    lblDisplay.text = String(c!)
+                }
+                else {
+                    lblDisplay.text = String(sender.tag)
+                    c = lblDisplay.text?.toDouble()
+                }
             }
         }
         else if ( a != nil && b != nil && c != nil ){
@@ -120,6 +151,61 @@ class ViewController: UIViewController {
     }
     
     @IBAction func posNavBtn(_ sender: Any) {
+        if ( a == nil && b == nil && c == nil ){
+            if firstOperator == .null && secondOperator == .null {
+                a = 0
+                lblDisplay.text = "-" + String(a!)
+            }
+//            else if firstOperator != .null && secondOperator == .null {
+//
+//            }
+//            else if firstOperator != .null && secondOperator != .null {
+//
+//            }
+        }
+            
+        else if ( a != nil && b == nil && c == nil ){
+            if firstOperator == .null && secondOperator == .null {
+                a! *= -1.0
+                lblDisplay.text = String(a!)
+            }
+            else if firstOperator != .null && secondOperator == .null {
+                b = 0
+                lblDisplay.text = "-" + String(b!)
+            }
+//            else if firstOperator != .null && secondOperator != .null {
+//                
+//            }
+
+            
+        }
+            
+        else if ( a != nil && b != nil && c == nil ){
+//            if firstOperator == .null && secondOperator == .null {
+//
+//            }
+            if firstOperator != .null && secondOperator == .null {
+                b! *= -1
+                lblDisplay.text = "-" + String(b!)
+            }
+            else if firstOperator != .null && secondOperator != .null {
+                c = 0
+                lblDisplay.text = "-" +  String(c!)
+            }
+        }
+            
+        else if ( a != nil && b != nil && c != nil ){
+//            if firstOperator == .null && secondOperator == .null {
+//
+//            }
+//            else if firstOperator != .null && secondOperator == .null {
+//
+//            }
+            if firstOperator != .null && secondOperator != .null {
+                c! *= -1
+                lblDisplay.text = String(c!)
+            }
+        }
     }
     
     // + - x /
@@ -311,17 +397,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        if lblDisplay != nil {
-            lblDisplay.text = "0"
-        }
-        else {
-            print("????????????????????????????/")
-            print("????????????????????????????/")
-            print("????????????????????????????/")
-            print("????????????????????????????/")
-            print("????????????????????????????/")
-            print("????????????????????????????/")
-        }
+        //if lblDisplay != nil {
+        lblDisplay.text = "0"
+        
         
 //        if self.view.frame.width > self.view.frame.height {
 //            kbStackView.widthAnchor.constraint(equalToConstant: self.view.frame.height).isActive = true

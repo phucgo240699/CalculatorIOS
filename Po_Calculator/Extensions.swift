@@ -11,6 +11,15 @@ extension String {
     func toDouble() -> Double? {
         return NumberFormatter().number(from: self)?.doubleValue
     }
+    
+    func include (_ character: Character) -> Bool {
+        for e in self {
+            if e == character {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 infix operator <- : AssignmentPrecedence
