@@ -105,14 +105,6 @@
             </objects>
             <point key="canvasLocation" x="-742" y="427"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="MU3-ic-jns">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="2Rv-85-Avi" customClass="PageViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bhj-Hn-EK0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="110" y="427"/>
-        </scene>
         <!--Circle Progress View Controller-->
         <scene sceneID="Dzh-9T-eOH">
             <objects>
