@@ -8,22 +8,22 @@
 
 import UIKit
 
-@IBDesignable class RoundedButton: UIButton
-{
-    @IBInspectable var roundedButton: Bool = false {
-        didSet {
-            if roundedButton {
-                layer.cornerRadius = frame.height * 0.5
-            }
-        }
-    }
-
-    override func prepareForInterfaceBuilder() {
-        if roundedButton {
-            layer.cornerRadius = frame.height * 0.5
-        }
-    }
-}
+//@IBDesignable class RoundedButton: UIButton
+//{
+//    @IBInspectable var roundedButton: Bool = false {
+//        didSet {
+//            if roundedButton {
+//                layer.cornerRadius = frame.height * 0.5
+//            }
+//        }
+//    }
+//
+//    override func prepareForInterfaceBuilder() {
+//        if roundedButton {
+//            layer.cornerRadius = frame.height * 0.5
+//        }
+//    }
+//}
 
 enum Operation {
     case add
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func numberPressed(_ sender: RoundedButton) {
+    @IBAction func numberPressed(_ sender: UIButton) {
         if ( a == nil && b == nil && c == nil ){
             if sender.tag != 0 {
                 lblDisplay.text = String(sender.tag)
@@ -90,8 +90,10 @@ class ViewController: UIViewController {
                     lblDisplay.text = String(a!)
                 }
                 else {
-                    lblDisplay.text! += String(sender.tag)
-                    a = lblDisplay.text?.toDouble()
+                    if ( lblDisplay.text!.count < 10 ){
+                        lblDisplay.text! += String(sender.tag)
+                        a = lblDisplay.text?.toDouble()
+                    }
                 }
             }
             else if firstOperator != .null {
@@ -114,8 +116,10 @@ class ViewController: UIViewController {
                     lblDisplay.text = String(b!)
                 }
                 else {
-                    lblDisplay.text! += String(sender.tag)
-                    b = lblDisplay.text?.toDouble()
+                    if ( lblDisplay.text!.count < 10 ){
+                        lblDisplay.text! += String(sender.tag)
+                        b = lblDisplay.text?.toDouble()
+                    }
                 }
                 
             }
@@ -132,10 +136,21 @@ class ViewController: UIViewController {
             }
         }
         else if ( a != nil && b != nil && c != nil ){
-            lblDisplay.text! += String(sender.tag)
-            c = lblDisplay.text?.toDouble()
+            if (lblDisplay.text?.include("-"))! {
+                c  = lblDisplay.text?.toDouble()
+                c! -= Double(sender.tag)
+                lblDisplay.text = String(c!)
+            }
+            else {
+                if ( lblDisplay.text!.count < 10 ){
+                    lblDisplay.text! += String(sender.tag)
+                    c = lblDisplay.text?.toDouble()
+                }
+            }
         }
     }
+    
+    
     
     @IBAction func acBtn(_ sender: Any) {
         a = nil
@@ -202,6 +217,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     // + - x /
     @IBAction func divideBtn(_ sender: Any) {
         if ( a == nil && b == nil && c == nil ){
@@ -231,7 +247,6 @@ class ViewController: UIViewController {
             secondOperator = .divide
             lblDisplay.text = String(b!)
         }
-        
     }
     
     @IBAction func multiplyBtn(_ sender: Any) {
@@ -262,8 +277,8 @@ class ViewController: UIViewController {
             secondOperator = .multiply
             lblDisplay.text = String(b!)
         }
-        
     }
+    
     
     @IBAction func minusBtn(_ sender: Any) {
         if ( a == nil && b == nil && c == nil ){
@@ -292,8 +307,8 @@ class ViewController: UIViewController {
             lblDisplay.text = String(a!)
             
         }
-        
     }
+    
     
     @IBAction func plusBtn(_ sender: Any) {
         if ( a == nil && b == nil && c == nil ){
@@ -322,60 +337,60 @@ class ViewController: UIViewController {
             lblDisplay.text = String(a!)
             
         }
-
     }
+    
     
     @IBAction func equalBtn(_ sender: Any) {
         if firstOperator == .null && secondOperator == .null {
-            
-        }
-            
-        else if firstOperator != .null && secondOperator == .null {
-            if a != nil && b != nil {
-                a = calculate(a!, b!, paraOperator: firstOperator)
-                b = nil
-                firstOperator = .null
-                lblDisplay.text = String(a!)
-            }
-        }
-            
-        else if firstOperator != .null && secondOperator != .null {
-            if a != nil && b != nil && c != nil {
-                if secondOperator == .multiply || secondOperator == .divide {
-                    b = calculate(b!, c!, paraOperator: secondOperator)
-                    c = nil
-                    secondOperator = .null
-                    a = calculate(a!, b!, paraOperator: firstOperator)
-                    b = nil
-                    firstOperator = .null
-                    lblDisplay.text = String(a!)
+                    
                 }
-                else {
-                    a = calculate(a!, b!, paraOperator: firstOperator)
-                    b = nil
-                    firstOperator = .null
-                    a = calculate(a!, c!, paraOperator: secondOperator)
-                    c = nil
-                    secondOperator = .null
-                    lblDisplay.text = String(a!)
+                    
+                else if firstOperator != .null && secondOperator == .null {
+                    if a != nil && b != nil {
+                        a = calculate(a!, b!, paraOperator: firstOperator)
+                        b = nil
+                        firstOperator = .null
+                        lblDisplay.text = String(a!)
+                    }
                 }
-            }
-        }
-            
-//        else if firstOperator == .null && secondOperator == .null {
-//
-//        }
-        
+                    
+                else if firstOperator != .null && secondOperator != .null {
+                    if a != nil && b != nil && c != nil {
+                        if secondOperator == .multiply || secondOperator == .divide {
+                            b = calculate(b!, c!, paraOperator: secondOperator)
+                            c = nil
+                            secondOperator = .null
+                            a = calculate(a!, b!, paraOperator: firstOperator)
+                            b = nil
+                            firstOperator = .null
+                            lblDisplay.text = String(a!)
+                        }
+                        else {
+                            a = calculate(a!, b!, paraOperator: firstOperator)
+                            b = nil
+                            firstOperator = .null
+                            a = calculate(a!, c!, paraOperator: secondOperator)
+                            c = nil
+                            secondOperator = .null
+                            lblDisplay.text = String(a!)
+                        }
+                    }
+                }
+                    
+        //        else if firstOperator == .null && secondOperator == .null {
+        //
+        //        }
     }
- 
+    
     
     @IBAction func pointBtn(_ sender: Any) {
         if ((lblDisplay.text?.rangeOfCharacter(from: CharacterSet(charactersIn: "."))) == nil){
-            if lblDisplay.text!.count < 9 {
+            if lblDisplay.text!.count < 10 {
                 lblDisplay.text! += "."
             }
         }
     }
+    
     
     
     @IBOutlet var lblDisplay: UILabel!

@@ -85,12 +85,13 @@ extension ExampleViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print(shouldPerformSegue(withIdentifier: "DetailExample", sender: self))
         // Bundle identifier
         if indexPath.row % 2 == 0 {
             if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailExample") as? DetailExampleViewController {
                 detailVC.modalPresentationStyle = .popover
-                present(detailVC, animated: true, completion: nil)
+                
+                self.navigationController?.pushViewController(detailVC, animated: true)
             }
                
         }
