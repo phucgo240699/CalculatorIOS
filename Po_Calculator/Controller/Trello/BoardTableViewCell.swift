@@ -15,7 +15,7 @@ class BoardTableViewCell: UITableViewCell {
     @IBOutlet var container: UIView!
     
     func setUpContainer(){
-        container.layer.cornerRadius = container.bounds.height * 0.2
+        container.layer.cornerRadius = container.bounds.height * 0.1
     }
     
     override func awakeFromNib() {

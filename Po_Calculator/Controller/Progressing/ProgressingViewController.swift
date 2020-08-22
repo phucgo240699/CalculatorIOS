@@ -73,7 +73,6 @@ class ProgressingViewController: UIViewController {
     func setUpCircle(_ frame: CGRect){
         cp = CircularProgressView(frame: CGRect(x: frame.width * 0.2, y: frame.height/8, width: frame.width * 0.5, height: frame.width * 0.5))
         
-        
         guard let cp = cp else {
             return
         }
@@ -99,10 +98,10 @@ class ProgressingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         toggleGradient = true
-        
-        pageVC.view.frame.size = CGSize(width: pageView.frame.width, height: pageView.frame.height * 1.1)
+        let width = pageView.bounds.width
+        let height = pageView.frame.height
+        pageVC.view.frame.size = CGSize(width: width, height: height * 1.1)
         pageVC.view.frame.origin = CGPoint(x: 0.0, y: 0.0)
-
         pageView.addSubview(pageVC.view)
         
         setUpCircle(pageVC.subViewControllers[0].view.bounds)

@@ -6,9 +6,9 @@
 //  Copyright © 2020 Phúc Lý. All rights reserved.
 //
 
-import Foundation
-
-struct Board {
-    var thumbnail: String
-    var title: String
-}
+//import Foundation
+//
+//struct Board {
+//    var thumbnail: String
+//    var title: String
+//}

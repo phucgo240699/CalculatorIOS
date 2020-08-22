@@ -32,45 +32,20 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     }
     
     lazy var subViewControllers: [UIViewController] = {
-       return [
-        UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CircleProgressViewController") as! CircleProgressViewController,
-        UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LineProgressViewController") as! LineProgressViewController
+       return
+        [
+            CircleProgressViewController(),
+            LineProgressViewController()
         ]
     }()
     
-//    func createCarouselItemControler(with titleText: String?, with color: UIColor?) -> UIViewController {
-//        let c = UIViewController()
-//        c.view = PageViewController()
-//
-//        return c
-//    }
-//    
-//    func populateItems() {
-//        let text = ["🎖", "👑", "🥇"]
-//        let backgroundColor:[UIColor] = [.blue, .red, .green]
-//        
-//        for (index, t) in text.enumerated() {
-//            let c = createCarouselItemControler(with: t, with: backgroundColor[index])
-//            items.append(c)
-//        }
-//    }
-//    
-//    func decoratePageControl() {
-//        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
-//        pc.currentPageIndicatorTintColor = .orange
-//        pc.pageIndicatorTintColor = .gray
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
-        
-//        decoratePageControl()
-//        
-//        populateItems()
 
-        // Do any additional setup after loading the view.
+        
         if let firstViewController = subViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
@@ -83,16 +58,5 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-//        fatalError("init(coder:) has not been implemented")
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

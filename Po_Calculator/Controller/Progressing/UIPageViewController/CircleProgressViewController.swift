@@ -12,7 +12,7 @@ class CircleProgressViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor(red: 57/255, green: 70/255, blue: 85/255, alpha: 1.0)
     }
 
 }

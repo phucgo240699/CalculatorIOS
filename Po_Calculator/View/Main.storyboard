@@ -60,9 +60,7 @@
                     <navigationItem key="navigationItem" title="Boards" id="66c-zR-AMA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9Tb-ql-3J8">
                             <connections>
-                                <segue destination="jQy-FK-cM0" kind="popoverPresentation" popoverAnchorBarButtonItem="9Tb-ql-3J8" id="TF6-Bu-79w">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="jQy-FK-cM0" kind="presentation" modalPresentationStyle="fullScreen" id="TF6-Bu-79w"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -74,18 +72,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xqp-ax-OQL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1542.0289855072465" y="1161.8303571428571"/>
+            <point key="canvasLocation" x="-742" y="1162"/>
         </scene>
         <!--Creation Card Board-->
         <scene sceneID="Xr3-er-JcW">
             <objects>
                 <viewController id="jQy-FK-cM0" customClass="CreationBoardViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZEG-hz-fkI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pcQ-MU-xuA" userLabel="Title Stack View">
-                                <rect key="frame" x="20" y="80" width="374" height="34"/>
+                                <rect key="frame" x="20" y="124" width="374" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ik-BF-3Ml">
                                         <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
@@ -104,7 +102,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="20d-d8-ENT" userLabel="Background Stack View">
-                                <rect key="frame" x="20" y="144" width="374" height="283"/>
+                                <rect key="frame" x="20" y="188" width="374" height="286.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgb-mU-15L">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -113,7 +111,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="De3-Fh-TqC">
-                                        <rect key="frame" x="0.0" y="30.5" width="374" height="252.5"/>
+                                        <rect key="frame" x="0.0" y="30.5" width="374" height="256"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="fHb-BR-h9M">
                                             <size key="itemSize" width="80" height="80"/>
@@ -132,21 +130,21 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOx-W8-6eN">
-                                <rect key="frame" x="338" y="20" width="56" height="34"/>
+                                <rect key="frame" x="338" y="64" width="56" height="34"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="addBtnPressed:" destination="jQy-FK-cM0" eventType="touchUpInside" id="UBz-sN-FeU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JN-Et-cNA">
-                                <rect key="frame" x="20" y="20" width="56" height="34"/>
+                                <rect key="frame" x="20" y="64" width="56" height="34"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelBtnPressed:" destination="jQy-FK-cM0" eventType="touchUpInside" id="b88-Li-zFG"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JK1-4y-SJF" userLabel="Color Stack View">
-                                <rect key="frame" x="20" y="457" width="374" height="282.5"/>
+                                <rect key="frame" x="20" y="504.5" width="374" height="286"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdJ-Is-gZd">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -155,7 +153,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fZT-KZ-m0e">
-                                        <rect key="frame" x="0.0" y="30.5" width="374" height="252"/>
+                                        <rect key="frame" x="0.0" y="30.5" width="374" height="255.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Kxb-4N-WOI">
                                             <size key="itemSize" width="80" height="80"/>
@@ -215,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyR-UV-cm7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1542" y="1908"/>
+            <point key="canvasLocation" x="-742" y="1908"/>
         </scene>
         <!--Setting Board-->
         <scene sceneID="igb-sh-u6e">
@@ -231,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huv-lO-bXR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-742" y="1908"/>
+            <point key="canvasLocation" x="74" y="1908"/>
         </scene>
         <!--Detail Board-->
         <scene sceneID="7rc-nE-79H">
@@ -253,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Smr-0H-UZb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-742" y="1162"/>
+            <point key="canvasLocation" x="74" y="1162"/>
         </scene>
         <!--Item-->
         <scene sceneID="Q7G-KH-IIo">
@@ -310,36 +308,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kE5-E2-Adv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-742" y="427"/>
-        </scene>
-        <!--Circle Progress View Controller-->
-        <scene sceneID="Dzh-9T-eOH">
-            <objects>
-                <viewController storyboardIdentifier="CircleProgressViewController" id="cmR-xD-nRn" customClass="CircleProgressViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="r3k-pm-dYR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.22300433394360819" green="0.27415955884567478" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="RFv-lv-tes"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pPc-07-ugG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-62" y="428"/>
-        </scene>
-        <!--Line Progress View Controller-->
-        <scene sceneID="QWp-6C-Usj">
-            <objects>
-                <viewController storyboardIdentifier="LineProgressViewController" id="F4g-aZ-MiB" customClass="LineProgressViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oEr-ky-3Vh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.23965334627591287" green="0.33451470414999174" blue="0.11266081295581615" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="8om-Xa-SBe"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JM7-aj-J8V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="603" y="427"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -683,7 +651,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vkQ-dI-TJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2330.434782608696" y="1161.8303571428571"/>
+            <point key="canvasLocation" x="-1542" y="1162"/>
         </scene>
     </scenes>
     <resources>

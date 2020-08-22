@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CreationBoardViewController: UIViewController {
     
@@ -20,18 +21,31 @@ class CreationBoardViewController: UIViewController {
     }
     
     @IBAction func addBtnPressed(_ sender: UIButton) {
-        if let newThumbnail = newThumbnail, let title = titleBoard.text {
-            newBoard = Board(thumbnail: newThumbnail, title: title)
-            
-            self.closeVC()
+        let board = Board(context: context)
+        if let title = titleBoard.text, let thumbnail = newThumbnail {
+            board.title = title
+            board.thumbnail = thumbnail
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
+            DispatchQueue.main.async {
+                self.closeVC()
+            }
+
         }
     }
     
-    var newBoard: Board?
+    // Coredata
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
     var newThumbnail: String?
     
+    // Properties
     var listBoardBackground: [String] = ["heart", "calendar", "trash", "tray", "doc"]
-    var listBoardColor : [UIColor] = [.red, .systemPink, .orange, .yellow, .green, .blue, .purple, .lightGray]
+    var listBoardColor : [Color] = [.red, .pink, .organe, .yellow, .green, .blue, .purple, .silver]
     
     var selectedBackgroundIndex: IndexPath?
     var selectedColorIndex: IndexPath?
@@ -50,11 +64,21 @@ class CreationBoardViewController: UIViewController {
         
         backgroundColorBoardCLV.delegate = self
         backgroundColorBoardCLV.dataSource = self
+        hideKeyboardWhenTappedAround()
     }
     
     
 }
 
+// Function Support
+extension CreationBoardViewController {
+    func closeVC() {
+        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// Collection View
 extension CreationBoardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionView.tag == 0 ? listBoardBackground.count : listBoardColor.count
@@ -62,14 +86,14 @@ extension CreationBoardViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let row = indexPath.row
-        
+        let edgeSize = collectionView.bounds.width / 4 - 5
         
         // Color
         if collectionView.tag == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorBoardCell", for: indexPath)
-            
-            cell.frame.size = CGSize(width: collectionView.bounds.width / 4 - 5, height: collectionView.bounds.width / 4 - 5)
-            cell.contentView.backgroundColor = listBoardColor[indexPath.row]
+            cell.frame.size = CGSize(width: edgeSize, height: edgeSize)
+            cell.contentView.layer.cornerRadius = cell.bounds.width * 0.08
+            cell.contentView.backgroundColor = listBoardColor[indexPath.row].toUIColor()
             cell.layer.borderColor = UIColor.black.cgColor
             
             if (selectedBackgroundIndex != nil){
@@ -90,7 +114,8 @@ extension CreationBoardViewController: UICollectionViewDelegate, UICollectionVie
         
         // Background image
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BackgroundBoardCell", for: indexPath) as! BackgroundBoardCollectionViewCell
-        cell.frame.size = CGSize(width: collectionView.bounds.width / 4 - 5, height: collectionView.bounds.width / 4 - 5)
+        cell.frame.size = CGSize(width: edgeSize, height: edgeSize)
+        cell.contentView.layer.cornerRadius = cell.bounds.width * 0.08
         cell.backgroundImg.image = UIImage(systemName: listBoardBackground[row])
         cell.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -128,7 +153,7 @@ extension CreationBoardViewController: UICollectionViewDelegate, UICollectionVie
         }
         else {
             selectedColorIndex = indexPath
-            newThumbnail = listBoardColor[indexPath.row].htmlRGBColor
+            newThumbnail = listBoardColor[indexPath.row].toString()
             selectedBackgroundIndex = nil
             backgroundBoardCLV.reloadData()
         }
@@ -137,6 +162,7 @@ extension CreationBoardViewController: UICollectionViewDelegate, UICollectionVie
     }
 }
 
+// Text Field
 extension CreationBoardViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if titleBoard.text?.count ?? 0 > 0 {
@@ -145,13 +171,5 @@ extension CreationBoardViewController: UITextFieldDelegate {
         else {
             addButton.isEnabled = false
         }
-    }
-}
-
-
-extension CreationBoardViewController {
-    func closeVC() {
-        self.navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
     }
 }

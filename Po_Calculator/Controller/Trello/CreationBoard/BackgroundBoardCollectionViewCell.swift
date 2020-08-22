@@ -9,7 +9,6 @@
 import UIKit
 
 class BackgroundBoardCollectionViewCell: UICollectionViewCell {
-    @IBOutlet var container: UIView!
     @IBOutlet var backgroundImg: UIImageView!
     
     override func awakeFromNib() {

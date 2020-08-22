@@ -12,7 +12,7 @@ class LineProgressViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor(red: 62/255, green: 85/255, blue: 29/255, alpha: 1.0)
         // Do any additional setup after loading the view.
     }
     
