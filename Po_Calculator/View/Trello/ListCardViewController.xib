@@ -22,11 +22,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="34" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uBn-4o-sqo">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="30" sectionHeaderHeight="28" estimatedSectionHeaderHeight="34" sectionFooterHeight="28" estimatedSectionFooterHeight="30" translatesAutoresizingMaskIntoConstraints="NO" id="uBn-4o-sqo">
                     <rect key="frame" x="10" y="109" width="394" height="200"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="800" constant="200" id="KEL-E9-44N"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="900" constant="200" id="KEL-E9-44N"/>
                     </constraints>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLp-WK-ygG" userLabel="Bottom Stack View">
@@ -42,9 +42,7 @@
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQX-5h-vqs">
                             <rect key="frame" x="163.5" y="0.0" width="67" height="41"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" title="+ Add card">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
+                            <state key="normal" title="+ Add card"/>
                             <connections>
                                 <action selector="addCardBtnPressed:" destination="-1" eventType="touchUpInside" id="B9o-wV-HX4"/>
                             </connections>
@@ -69,7 +67,7 @@
                 <constraint firstItem="eLp-WK-ygG" firstAttribute="top" secondItem="uBn-4o-sqo" secondAttribute="bottom" constant="10" id="1KH-d0-Hng"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uBn-4o-sqo" secondAttribute="trailing" constant="10" id="4fD-xH-s3l"/>
                 <constraint firstItem="eLp-WK-ygG" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.05" id="5xm-vf-hfu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uBn-4o-sqo" secondAttribute="bottom" priority="700" constant="700" id="6KY-Lt-3YF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uBn-4o-sqo" secondAttribute="bottom" priority="700" constant="860" id="6KY-Lt-3YF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eLp-WK-ygG" secondAttribute="bottom" constant="10" id="FfP-XC-dgf"/>
                 <constraint firstItem="uBn-4o-sqo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="M9R-sK-weC"/>
                 <constraint firstItem="eLp-WK-ygG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="TXZ-11-nfu"/>

@@ -50,6 +50,15 @@ extension String {
         }
         return .black
     }
+    
+    func isEmptyOrSpaceing () -> Bool { // Is empty or all space
+        for e in self {
+            if e != " " {
+                return false
+            }
+        }
+        return true
+    }
 }
 
 infix operator <- : AssignmentPrecedence

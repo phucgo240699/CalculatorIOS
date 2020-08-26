@@ -1,16 +1,15 @@
 //
-//  BackgroundBoardCollectionViewCell.swift
+//  BackgroundColoBoardCLVCell.swift
 //  Po_Calculator
 //
-//  Created by Phúc Lý on 8/21/20.
+//  Created by Phúc Lý on 8/23/20.
 //  Copyright © 2020 Phúc Lý. All rights reserved.
 //
 
 import UIKit
 
-class BackgroundBoardCollectionViewCell: UICollectionViewCell {
-    @IBOutlet var backgroundImg: UIImageView!
-    
+class BackgroundColoBoardCLVCell: UICollectionViewCell {
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
