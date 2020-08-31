@@ -122,7 +122,7 @@ extension DetailBoardViewController : UITableViewDelegate, UITableViewDataSource
 
         menuBtn.tag = tableView.tag
         menuBtn.addTarget(self, action: #selector(self.showMenuList(sender:)), for: .touchUpInside)
-        print(lists[tableView.tag].name)
+        
         return headerView
     }
     
@@ -148,7 +148,7 @@ extension DetailBoardViewController : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cardCell", for: indexPath) as! CardTableViewCell
-        print("cell for row: \(lists[tableView.tag].name)")
+        
         guard let lbl = cell.cardNameLbl else {
             return UITableViewCell()
         }

@@ -7,12 +7,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreationBoardViewController" customModule="Po_Calculator" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
             <connections>
-                <outlet property="addButton" destination="uEg-MD-Ii9" id="JE7-Pp-uGm"/>
-                <outlet property="backgroundColorCLV" destination="hSZ-lH-e9o" id="eno-Sr-tHp"/>
-                <outlet property="backgroundImageCLV" destination="7WT-dA-l0G" id="PkV-MM-K29"/>
-                <outlet property="titleBoard" destination="bTu-pG-6VY" id="HQh-wx-lfW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,16 +27,10 @@
                     <state key="normal" image="xmark.circle.fill" catalog="system">
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                     </state>
-                    <connections>
-                        <action selector="cancelBtnPressed:" destination="-1" eventType="touchUpInside" id="aPg-tZ-ytw"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEg-MD-Ii9">
                     <rect key="frame" x="329" y="10" width="36" height="30"/>
                     <state key="normal" title="Add"/>
-                    <connections>
-                        <action selector="addBtnPressed:" destination="-1" eventType="touchUpInside" id="pSb-Xg-wly"/>
-                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="khX-sm-ndG" userLabel="Title Stack View">
                     <rect key="frame" x="20" y="66" width="335" height="33.5"/>

@@ -60,7 +60,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="9Tb-ql-3J8">
                                 <connections>
-                                    <segue destination="jQy-FK-cM0" kind="presentation" identifier="gotoCreationBoard" modalPresentationStyle="fullScreen" id="eyA-Dd-MmT"/>
+                                    <action selector="addBtnPressed:" destination="jnL-S1-GeX" id="A3f-Sj-UeT"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Edit" id="rV9-Si-fvI">

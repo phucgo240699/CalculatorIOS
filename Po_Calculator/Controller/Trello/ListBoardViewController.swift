@@ -14,6 +14,11 @@ class ListBoardViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var editBtn: UIBarButtonItem!
+    @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
+        let creationBoardVC = CreationBoardViewControlelr()
+        creationBoardVC.modalPresentationStyle = .fullScreen
+        self.present(creationBoardVC, animated: true, completion: nil)
+    }
     var refreshControl = UIRefreshControl()
     
     // Core Data
@@ -40,8 +45,8 @@ class ListBoardViewController: UIViewController {
         hideKeyboardWhenTappedAround()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear (_ animated: Bool) {
+        super.viewDidAppear(animated)
         FethAndReload()
     }
 }

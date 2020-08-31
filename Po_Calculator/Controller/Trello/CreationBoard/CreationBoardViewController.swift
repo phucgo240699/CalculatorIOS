@@ -9,65 +9,109 @@
 import UIKit
 import CoreData
 
-class CreationBoardViewController: UIViewController {
+class CreationBoardViewControlelr: UIViewController {
+    var saveBtn: UIButton?
+    var cancelBtn: UIButton?
+
+    var lblBoard: UILabel?
+    var lblBoardValue: UITextField?
+    var boardStackView: UIStackView?
     
-    @IBOutlet var titleBoard: UITextField!
-    @IBOutlet var backgroundImageCLV: UICollectionView!
-    @IBOutlet var backgroundColorCLV: UICollectionView!
+    var imagesCollectionView: UICollectionView? // tag = 0
+    var colorsCollectionView: UICollectionView? // tag = 1
     
-    @IBOutlet var addButton: UIButton!
+    var images: [String] = Image.names
+    var colors: [Color] = ListColor.colors
     
-    @IBAction func cancelBtnPressed(_ sender: UIButton) {
-        self.closeVC()
-    }
-    
-    @IBAction func addBtnPressed(_ sender: UIButton) {
-        if let title = titleBoard.text, let thumbnail = newThumbnail {
-            var newIndex : Int?
-            newIndex = CustomBoard.shared.getBoardsSorting(by: "id", ascending: true).count
-            CustomBoard.shared.addBoard(thumbnail: thumbnail, title: title)
-            
-            self.closeVC()
-        }
-    }
-    
-    // Coredata
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    var newThumbnail: String?
-    
-    // Properties
-    var listImageBackground: [String] = Image.names
-    var listColorBackground : [Color] = ListColor.colors
-    
-    var selectedBackgroundIndex: IndexPath?
-    var selectedColorIndex: IndexPath?
-    var isFirstLookAtBackgroundCollectionView: Bool = true
-    var isFirstLookAtColorCollectionView: Bool = true
-    var borderWidthCell : CGFloat = 5.0
+    var selectedCellIndex: Int = 0
+    var selectedCollectionViewIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(named: "basicBackgroundColor")
         
-        titleBoard.delegate = self
+        saveBtn = UIButton()
+        cancelBtn = UIButton()
         
-        backgroundImageCLV.delegate = self
-        backgroundImageCLV.dataSource = self
-        backgroundImageCLV.register(UINib(nibName: "BackgroundImageBoardCLVCell", bundle: nil), forCellWithReuseIdentifier: "BackgroundImageBoardCell")
+        lblBoard = UILabel()
+        lblBoardValue = UITextField()
+        boardStackView = UIStackView()
+        
+        let layoutImage = UICollectionViewFlowLayout()
+        layoutImage.scrollDirection = .horizontal
+        imagesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutImage)
+        imagesCollectionView?.tag = 0
+        
+        let layoutColor = UICollectionViewFlowLayout()
+        layoutColor.scrollDirection = .horizontal
+        colorsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutColor)
+        colorsCollectionView?.tag = 1
         
         
-        backgroundColorCLV.delegate = self
-        backgroundColorCLV.dataSource = self
-        backgroundColorCLV.register(UINib(nibName: "BackgroundColoBoardCLVCell", bundle: nil), forCellWithReuseIdentifier: "BackgroundColorBoardCell")
+        guard let saveBtn = saveBtn else {
+            return
+        }
+        guard let cancelBtn = cancelBtn else {
+            return
+        }
+        guard let lblBoard = lblBoard, let lblBoardValue = lblBoardValue, let boardStackView = boardStackView else {
+            return
+        }
         
+        guard let imagesCollectionView = imagesCollectionView else {
+            return
+        }
+        guard let colorsCollectionView = colorsCollectionView else {
+            return
+        }
         
-        hideKeyboardWhenTappedAround()
+        view.addSubview(saveBtn)
+        view.addSubview(cancelBtn)
         
+        boardStackView.addArrangedSubview(lblBoard)
+        boardStackView.addArrangedSubview(lblBoardValue)
+        view.addSubview(boardStackView)
+        view.addSubview(imagesCollectionView)
+        view.addSubview(colorsCollectionView)
+        
+        setupSaveBtn()
+        setupCancelBtn()
+        setUpBoard()
+        setUpImagesCollectionView()
+        setUpColorsCollectionView()
+        
+        imagesCollectionView.delegate = self
+        imagesCollectionView.dataSource = self
+        imagesCollectionView.register(UINib(nibName: "BackgroundImageBoardCLVCell", bundle: nil), forCellWithReuseIdentifier: "BackgroundImageBoardCell")
+        
+        colorsCollectionView.delegate = self
+        colorsCollectionView.dataSource = self
+        colorsCollectionView.register(UINib(nibName: "BackgroundColoBoardCLVCell", bundle: nil), forCellWithReuseIdentifier: "BackgroundColorBoardCell")
     }
-}
+    
+    @objc func saveAction() {
 
-// Function Support
-extension CreationBoardViewController {
+        guard lblBoardValue != nil && lblBoardValue?.text != nil &&  lblBoardValue?.text?.isEmptyOrSpaceing() == false else {
+            return
+        }
+        var thumbnail = ""
+        if selectedCollectionViewIndex == 0 {
+            thumbnail = images[selectedCellIndex]
+        }
+        else if selectedCollectionViewIndex == 1 {
+            thumbnail = colors[selectedCellIndex].toString()
+        }
+        
+        CustomBoard.shared.addBoard(thumbnail: thumbnail, title: (lblBoardValue?.text!)!)
+        
+        self.closeVC()
+    }
+    
+    @objc func cancelAction() {
+        self.closeVC()
+    }
+
+    
     func closeVC() {
         DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: true)
@@ -76,110 +120,69 @@ extension CreationBoardViewController {
     }
 }
 
-// Collection View
-extension CreationBoardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let edgeSize = collectionView.bounds.width / 4 - 5
-        return CGSize(width: edgeSize, height: edgeSize)
-    }
+
+extension CreationBoardViewControlelr: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        return  10.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        return 10.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.bounds.height * 0.2, height: view.bounds.height * 0.2)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView.tag == 0 ? listImageBackground.count : listColorBackground.count
+        return collectionView.tag == 0 ? images.count : colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let row = indexPath.row
-        
-        // Color
-        if collectionView.tag == 1 {
-            let colorCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BackgroundColorBoardCell", for: indexPath) as! BackgroundColoBoardCLVCell
+        if collectionView.tag == 0 {
+            // Image
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BackgroundImageBoardCell", for: indexPath) as! BackgroundImageBoardCLVCell
+            let imageName = images[indexPath.row]
+            cell.backgroundImg.contentMode = .scaleAspectFill
+            cell.layer.cornerRadius = cell.bounds.width * 0.05
+            cell.backgroundImg.image = UIImage(named: imageName)
+            cell.layer.borderColor = UIColor.lightGray.cgColor
+            cell.layer.borderWidth = (selectedCollectionViewIndex == collectionView.tag && selectedCellIndex == indexPath.row) ? cell.bounds.width * 0.05 : 0.0
+            
+            return cell
+        }
 
-            colorCell.contentView.layer.cornerRadius = colorCell.bounds.width * 0.08
-            colorCell.contentView.backgroundColor = listColorBackground[indexPath.row].toUIColor()
-            colorCell.layer.borderColor = UIColor.black.cgColor
-            
-            if (selectedBackgroundIndex != nil){
-                colorCell.layer.borderWidth = 0.0
-            }
-            else {
-                if indexPath == selectedColorIndex{
-                    colorCell.layer.borderWidth = borderWidthCell
-                }
-                else {
-                    colorCell.layer .borderWidth = 0.0
-                }
-            }
-            
-            return colorCell
-        }
-        //------------------------------
-        
-        // Background image
-        let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "BackgroundImageBoardCell", for: indexPath) as! BackgroundImageBoardCLVCell)
-        cell.contentView.layer.cornerRadius = cell.bounds.width * 0.08
-        cell.backgroundImg.image = UIImage(named: listImageBackground[row])
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-            
-        if isFirstLookAtBackgroundCollectionView { //Default highlighted
-            if row == 0 {
-                cell.layer.borderWidth = borderWidthCell
-                newThumbnail = listImageBackground[row]
-                isFirstLookAtBackgroundCollectionView = false
-            }
-        }
-        else {
-            if (selectedColorIndex != nil){
-                cell.layer.borderWidth = 0.0
-            }
-            else {
-                if indexPath == selectedBackgroundIndex{
-                    cell.layer.borderWidth = borderWidthCell
-                }
-                else {
-                    cell.layer .borderWidth = 0.0
-                }
-            }
-        }
+        // Color
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BackgroundColorBoardCell", for: indexPath) as! BackgroundColoBoardCLVCell
+        let color = colors[indexPath.row]
+        cell.layer.cornerRadius = cell.bounds.width * 0.05
+        cell.backgroundColor = color.toUIColor()
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = (selectedCollectionViewIndex == collectionView.tag && selectedCellIndex == indexPath.row) ? cell.bounds.width * 0.05 : 0.0
         
         return cell
-        
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if collectionView.tag == 0 {
-            selectedBackgroundIndex = indexPath
-            newThumbnail = listImageBackground[indexPath.row]
-            selectedColorIndex = nil
-            backgroundColorCLV.reloadData()
+        if selectedCollectionViewIndex == collectionView.tag {
+            selectedCollectionViewIndex = collectionView.tag
+            selectedCellIndex = indexPath.row
+            DispatchQueue.main.async {
+                collectionView.reloadData()
+            }
         }
         else {
-            selectedColorIndex = indexPath
-            newThumbnail = listColorBackground[indexPath.row].toString()
-            selectedBackgroundIndex = nil
-            backgroundImageCLV.reloadData()
+            selectedCollectionViewIndex = collectionView.tag
+            selectedCellIndex = indexPath.row
+            DispatchQueue.main.async {
+                self.imagesCollectionView?.reloadData()
+                self.colorsCollectionView?.reloadData()
+            }
         }
         
-        collectionView.reloadData()
     }
-}
-
-// Text Field
-extension CreationBoardViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        if titleBoard.text?.count ?? 0 > 0 {
-            addButton.isEnabled = true
-        }
-        else {
-            addButton.isEnabled = false
-        }
-    }
+    
 }
