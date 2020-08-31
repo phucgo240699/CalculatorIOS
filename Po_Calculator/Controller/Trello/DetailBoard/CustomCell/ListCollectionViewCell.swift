@@ -17,19 +17,6 @@ class ListCollectionViewCell: UICollectionViewCell {
         
         self.backgroundColor = UIColor.clear
         
-        tableView = UITableView()
-        self.addSubview(tableView)
-        tableView.rowHeight = self.bounds.width * 0.2
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
-        tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
-        tableView.layer.cornerRadius = self.bounds.width * 0.02
     }
     
     required init?(coder: NSCoder) {

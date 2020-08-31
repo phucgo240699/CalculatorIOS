@@ -22,25 +22,17 @@ class CreationBoardViewController: UIViewController {
     }
     
     @IBAction func addBtnPressed(_ sender: UIButton) {
-        
         if let title = titleBoard.text, let thumbnail = newThumbnail {
-            var newIndex : Int = 0
-            
+            var newIndex : Int?
             newIndex = CustomBoard.shared.getBoardsSorting(by: "id", ascending: true).count
-            
-            print("newIndex: \(newIndex)")
-            
             CustomBoard.shared.addBoard(thumbnail: thumbnail, title: title)
-            DispatchQueue.main.async {
-                self.closeVC()
-            }
-
+            
+            self.closeVC()
         }
     }
     
     // Coredata
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     
     var newThumbnail: String?
     
@@ -77,8 +69,10 @@ class CreationBoardViewController: UIViewController {
 // Function Support
 extension CreationBoardViewController {
     func closeVC() {
-        self.navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

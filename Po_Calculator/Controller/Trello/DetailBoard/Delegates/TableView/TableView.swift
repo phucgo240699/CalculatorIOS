@@ -17,7 +17,7 @@ extension DetailBoardViewController : UITableViewDelegate, UITableViewDataSource
     //
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: tableView.bounds.width * 0.2))
-        footerView.backgroundColor = .green
+//        footerView.backgroundColor = .green
         
         let addCardBtn = UIButton()
         footerView.addSubview(addCardBtn)
@@ -95,6 +95,8 @@ extension DetailBoardViewController : UITableViewDelegate, UITableViewDataSource
         return tableView.bounds.width * 0.25 // UIDevice.current.userInterfaceIdiom == .pad ? 60.0 : 30.0
     }
     
+    
+    
     //
     // Custom Header
     //
@@ -102,7 +104,7 @@ extension DetailBoardViewController : UITableViewDelegate, UITableViewDataSource
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: tableView.bounds.width * 0.2))
         let width = headerView.bounds.width
         let height = headerView.bounds.height
-        headerView.backgroundColor = .red
+//        headerView.backgroundColor = .red
         let listNameLbl = UILabel()
         headerView.addSubview(listNameLbl)
 //        listNameLbl.frame = headerView.bounds
@@ -120,7 +122,7 @@ extension DetailBoardViewController : UITableViewDelegate, UITableViewDataSource
 
         menuBtn.tag = tableView.tag
         menuBtn.addTarget(self, action: #selector(self.showMenuList(sender:)), for: .touchUpInside)
-        
+        print(lists[tableView.tag].name)
         return headerView
     }
     
@@ -146,7 +148,7 @@ extension DetailBoardViewController : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cardCell", for: indexPath) as! CardTableViewCell
-        
+        print("cell for row: \(lists[tableView.tag].name)")
         guard let lbl = cell.cardNameLbl else {
             return UITableViewCell()
         }

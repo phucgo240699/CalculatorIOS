@@ -28,9 +28,13 @@ class DetailBoardViewController: UIViewController, UIGestureRecognizerDelegate {
             if let text = textField!.text, let board = self.board {
                 if text.isEmptyOrSpaceing() == false {
                     CustomList.shared.addList(name: text, board: board)
+                    self.lists = []
                     self.lists = CustomList.shared.getListsSorting(board: board, by: "id", ascending: self.ascendingId)
-        
-                    self.collectionView?.reloadData()
+                    
+                    DispatchQueue.main.async {
+                        self.collectionView?.reloadData()
+                    }
+
                 }
             }
         }

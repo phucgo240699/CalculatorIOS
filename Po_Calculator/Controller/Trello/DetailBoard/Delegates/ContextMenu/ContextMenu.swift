@@ -20,7 +20,12 @@ extension DetailBoardViewController {
                     return
                 }
                 CustomList.shared.deleteList(index: indexPath.row, board: board)
+
+                self.lists.removeAll()
+                
                 self.lists = CustomList.shared.getListsSorting(board: board, by: "id", ascending: true)
+                
+
                 DispatchQueue.main.async {
                     self.collectionView?.reloadData()
                 }

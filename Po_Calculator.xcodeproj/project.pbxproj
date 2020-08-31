@@ -42,9 +42,9 @@
 		3E9609BE24F8FB2100175AAE /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9609BD24F8FB2100175AAE /* ContextMenu.swift */; };
 		3EA2297924F1FF6900574894 /* BackgroundImageBoardCLVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2297724F1FF6900574894 /* BackgroundImageBoardCLVCell.swift */; };
 		3EA2297A24F1FF6900574894 /* BackgroundImageBoardCLVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2297824F1FF6900574894 /* BackgroundImageBoardCLVCell.xib */; };
+		3ECB12DF24FCF0F900A2BE0C /* SetupCreationBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECB12DE24FCF0F900A2BE0C /* SetupCreationBoardViewController.swift */; };
 		3ECC8D2424EAC97B002B6709 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECC8D2324EAC97B002B6709 /* Main.storyboard */; };
 		3ECC8D2724EAD2A0002B6709 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECC8D2624EAD2A0002B6709 /* PageViewController.swift */; };
-		3ED4137F24ED0EEE00F214A2 /* ListCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED4137D24ED0EEE00F214A2 /* ListCardViewController.xib */; };
 		3EDAAC9624F2057100459F17 /* BackgroundColoBoardCLVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAAC9424F2057100459F17 /* BackgroundColoBoardCLVCell.swift */; };
 		3EDAAC9724F2057100459F17 /* BackgroundColoBoardCLVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAAC9524F2057100459F17 /* BackgroundColoBoardCLVCell.xib */; };
 		3EDC36CA24F168DC009D0E00 /* CreationBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC36C824F168DC009D0E00 /* CreationBoardViewController.swift */; };
@@ -94,9 +94,9 @@
 		3E9609BD24F8FB2100175AAE /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		3EA2297724F1FF6900574894 /* BackgroundImageBoardCLVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageBoardCLVCell.swift; sourceTree = "<group>"; };
 		3EA2297824F1FF6900574894 /* BackgroundImageBoardCLVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundImageBoardCLVCell.xib; sourceTree = "<group>"; };
+		3ECB12DE24FCF0F900A2BE0C /* SetupCreationBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCreationBoardViewController.swift; sourceTree = "<group>"; };
 		3ECC8D2324EAC97B002B6709 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3ECC8D2624EAD2A0002B6709 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		3ED4137D24ED0EEE00F214A2 /* ListCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCardViewController.xib; sourceTree = "<group>"; };
 		3EDAAC9424F2057100459F17 /* BackgroundColoBoardCLVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColoBoardCLVCell.swift; sourceTree = "<group>"; };
 		3EDAAC9524F2057100459F17 /* BackgroundColoBoardCLVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColoBoardCLVCell.xib; sourceTree = "<group>"; };
 		3EDC36C824F168DC009D0E00 /* CreationBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationBoardViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +177,6 @@
 			children = (
 				3EDC36C724F168B4009D0E00 /* CreationBoard */,
 				3EED45B024ECCA87009B305D /* BoardTableViewCell.xib */,
-				3ED4137D24ED0EEE00F214A2 /* ListCardViewController.xib */,
 			);
 			path = Trello;
 			sourceTree = "<group>";
@@ -292,6 +291,7 @@
 				3EDAAC9424F2057100459F17 /* BackgroundColoBoardCLVCell.swift */,
 				3EA2297724F1FF6900574894 /* BackgroundImageBoardCLVCell.swift */,
 				3EDC36C824F168DC009D0E00 /* CreationBoardViewController.swift */,
+				3ECB12DE24FCF0F900A2BE0C /* SetupCreationBoardViewController.swift */,
 			);
 			path = CreationBoard;
 			sourceTree = "<group>";
@@ -463,7 +463,6 @@
 				3ECC8D2424EAC97B002B6709 /* Main.storyboard in Resources */,
 				3E48634924EC3BE000B7A5C4 /* Default-568h@2x.png in Resources */,
 				3EDC36CD24F16C46009D0E00 /* CreationBoardViewController.xib in Resources */,
-				3ED4137F24ED0EEE00F214A2 /* ListCardViewController.xib in Resources */,
 				3E3520C324E2714100AF5FFD /* LaunchScreen.storyboard in Resources */,
 				3E3520C024E2714100AF5FFD /* Assets.xcassets in Resources */,
 				3EED45B224ECCA87009B305D /* BoardTableViewCell.xib in Resources */,
@@ -535,6 +534,7 @@
 				3ECC8D2724EAD2A0002B6709 /* PageViewController.swift in Sources */,
 				3E0CEA0524F0E6850079EC8F /* UIColor+Extension.swift in Sources */,
 				3EA2297924F1FF6900574894 /* BackgroundImageBoardCLVCell.swift in Sources */,
+				3ECB12DF24FCF0F900A2BE0C /* SetupCreationBoardViewController.swift in Sources */,
 				3EE0850424EA5F9A007455E8 /* LineProgressView.swift in Sources */,
 				3E821B0624F3AD57000243F3 /* CustomList.swift in Sources */,
 				3EDAAC9624F2057100459F17 /* BackgroundColoBoardCLVCell.swift in Sources */,
