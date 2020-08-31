@@ -17,12 +17,12 @@ class LineProgressView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        createCircularPath()
+        createLinePath()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        createCircularPath()
+        createLinePath()
     }
     
     var progressColor = UIColor.white {
@@ -38,13 +38,7 @@ class LineProgressView: UIView {
     }
     
     
-    fileprivate func createCircularPath() {
-//        let width = frame.width
-//        let height = frame.height
-//        let lineWidth = min(width, height) * 0.1
-//        let center = CGPoint(x: width/2, y: height/2)
-//        let radius = (min(width, height) - lineWidth) / 2
-//        let circlePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+    fileprivate func createLinePath() {
         let line = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         
 //        line.move(to: CGPoint(x: 0, y: frame.height))

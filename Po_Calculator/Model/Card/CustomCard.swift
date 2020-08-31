@@ -14,22 +14,19 @@ class CustomCard {
     static let shared = CustomCard()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-//    func addCards(cards: [Card], list: List) {
-//        do {
-//            self.cards.append(contentsOf: cards)
-//
-//            try context.save()
-//        } catch {
-//            print(error)
-//        }
-//    }
-    
     func addCard(title: String, description: String, list: List) {
         do {
-            let numbersOfCard = try context.fetch(Card.fetchRequest()).count
+            let request: NSFetchRequest = Card.fetchRequest()
+            let predicate: NSPredicate = NSPredicate(format: "list == %@", list)
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.predicate = predicate
+            request.sortDescriptors = [sortDescriptor]
+            
+            let cards = try context.fetch(request)
+            let count = cards.count
             
             let newCard = Card(context: context)
-            newCard.id = Int64(numbersOfCard)
+            newCard.id = count > 0 ? cards[count - 1].id + 1 : 0
             newCard.isDone = false
             newCard.titleCard = title
             newCard.descriptionCard = description
@@ -41,6 +38,21 @@ class CustomCard {
         }
     }
 
+    func getCard(list: List, by index: Int) -> Card? {
+        do {
+            let request: NSFetchRequest = Card.fetchRequest()
+            let predicate: NSPredicate = NSPredicate(format: "list == %@ && id == %@", argumentArray: [list, Int64(index)])
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
+            request.predicate = predicate
+            
+            return try context.fetch(request)[index]
+        } catch {
+            print(error)
+        }
+        
+        return nil
+    }
     
     func getCardsSorting(list: List, by field: String, ascending: Bool) -> [Card] {
         do {
@@ -59,11 +71,18 @@ class CustomCard {
     
     func updateCard(index: Int, title: String, description: String, isDone: Bool, list: List){
         do {
-            let cards: [Card] = try context.fetch(Card.fetchRequest())
+            let request: NSFetchRequest = Card.fetchRequest()
+            let predicate: NSPredicate = NSPredicate(format: "list == %@", list)
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
             
-            cards[index].titleCard = title
-            cards[index].descriptionCard = description
-            cards[index].isDone = isDone
+            request.sortDescriptors = [sortDescriptor]
+            request.predicate = predicate
+            
+            let card: Card = try context.fetch(request)[index]
+            
+            card.titleCard = title
+            card.descriptionCard = description
+            card.isDone = isDone
         
             try context.save()
         } catch {
@@ -71,13 +90,20 @@ class CustomCard {
         }
     }
     
-    func deleteCard(index: Int){
+    func deleteCard(index: Int, list: List){
         do {
-            let cards: [Card] = try context.fetch(Card.fetchRequest())
+            let request: NSFetchRequest = Card.fetchRequest()
+            let predicate: NSPredicate = NSPredicate(format: "list == %@", list)
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            
+            request.sortDescriptors = [sortDescriptor]
+            request.predicate = predicate
+            
+            let card: Card = try context.fetch(request)[index]
             
             // Scan CheckList
             let requestCheckList: NSFetchRequest = CheckList.fetchRequest()
-            requestCheckList.predicate = NSPredicate(format: "card == %@", cards[index])
+            requestCheckList.predicate = NSPredicate(format: "card == %@", card)
             let checkListsOfCard = try context.fetch(requestCheckList)
                 
             for checkList in checkListsOfCard {
@@ -85,7 +111,7 @@ class CustomCard {
             }
             
             // Delete Card
-            context.delete(cards[index])
+            context.delete(card)
             
             try context.save()
         } catch {
@@ -93,32 +119,110 @@ class CustomCard {
         }
     }
     
+    
+    func moveCardIdToAnotherList(fromIndex: Int, toIndex: Int, fromList: List, toList: List, isAbove: Bool) {
+        do{
+            let request1: NSFetchRequest = Card.fetchRequest()
+            let predicate1 = NSPredicate(format: "list == %@", fromList)
+            let sortDescriptor1 = NSSortDescriptor(key: "id", ascending: true)
+            request1.sortDescriptors = [sortDescriptor1]
+            request1.predicate = predicate1
+            
+            let request2: NSFetchRequest = Card.fetchRequest()
+            let predicate2 = NSPredicate(format: "list == %@", toList)
+            let sortDescriptor2 = NSSortDescriptor(key: "id", ascending: true)
+            request2.sortDescriptors = [sortDescriptor2]
+            request2.predicate = predicate2
+            
+            let sourceCards = try context.fetch(request1)
+            let sourceCard = sourceCards[fromIndex]
+            
+            let desCards = try context.fetch(request2)
+            let count = desCards.count
+            
+            // Situation destination cards is empty
+            if count <= 0 {
+                sourceCard.id = 0
+                sourceCard.list = toList
+                
+                // Setup source cards id after move to another list
+                let request: NSFetchRequest = Card.fetchRequest()
+                let predicate = NSPredicate(format: "list == %@", fromList)
+                let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+                request.sortDescriptors = [sortDescriptor]
+                request.predicate = predicate
+                
+                let sourceCardsAfterMove = try context.fetch(request)
+                
+                for i in 0..<sourceCardsAfterMove.count {
+                    sourceCardsAfterMove[i].id = Int64(i)
+                }
+                
+                try context.save()
+                return
+            }
+            
+            
+            
+            if (isAbove) {
+                let desCard = desCards[toIndex]
+                sourceCard.id = desCard.id
+                
+                let range = desCard.id ... desCards[count - 1].id
+                for i in range {
+                    desCards[Int(i)].id = Int64(i+1)
+                }
+            }
+            else {
+                sourceCard.id = desCards[count-1].id + 1
+            }
+            sourceCard.list = toList
+            
+            
+            
+            // Setup source cards id after move to another list
+            let request: NSFetchRequest = Card.fetchRequest()
+            let predicate = NSPredicate(format: "list == %@", fromList)
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
+            request.predicate = predicate
+            
+            let sourceCardsAfterMove = try context.fetch(request)
+            
+            for i in 0..<sourceCardsAfterMove.count {
+                sourceCardsAfterMove[i].id = Int64(i)
+            }
+            
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
     
     func swapCardID(fromIndex: Int, toIndex: Int) {
-        do{
-            let cards: [Card] = try context.fetch(Card.fetchRequest())
-            
-            let fromId = cards[fromIndex].id
-            let toId = cards[toIndex].id
-            
-            cards[fromIndex].id = toId
-            cards[toIndex].id = fromId
-        
-            try context.save()
-        } catch {
-            print(error)
-        }
-    }
-    
-    func moveCardToAnotherList(index: Int, destinationList: List) {
         do {
-            let cards: [Card] = try context.fetch(Card.fetchRequest())
+            let request1: NSFetchRequest = Card.fetchRequest()
+            let sortDescriptor1 = NSSortDescriptor(key: "id", ascending: true)
+            request1.sortDescriptors = [sortDescriptor1]
             
-            cards[index].list = destinationList
+            let request2: NSFetchRequest = Card.fetchRequest()
+            let sortDescriptor2 = NSSortDescriptor(key: "id", ascending: true)
+            request2.sortDescriptors = [sortDescriptor2]
+            
+            
+            
+            let sourceCard = try context.fetch(request1)[fromIndex]
+            let desCard = try context.fetch(request2)[toIndex]
+            
+            let tempId = sourceCard.id
+            sourceCard.id = desCard.id
+            desCard.id = tempId
+            
             try context.save()
         } catch {
             print(error)
         }
     }
+
 }
 

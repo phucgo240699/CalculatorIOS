@@ -21,27 +21,30 @@
 		3E36C52224EC33D10009C771 /* ListBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36C52124EC33D10009C771 /* ListBoardViewController.swift */; };
 		3E36C52424EC35FF0009C771 /* DetailBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36C52324EC35FF0009C771 /* DetailBoardViewController.swift */; };
 		3E36C52824EC382E0009C771 /* SettingBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E36C52724EC382E0009C771 /* SettingBoardViewController.swift */; };
+		3E3AEAD224FA455700221C42 /* LineProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AEAD024FA455700221C42 /* LineProgressViewController.swift */; };
+		3E3AEAD324FA455700221C42 /* CircleProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AEAD124FA455700221C42 /* CircleProgressViewController.swift */; };
+		3E3AEAD524FA9B8400221C42 /* ImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AEAD424FA9B8400221C42 /* ImageNames.swift */; };
 		3E48634924EC3BE000B7A5C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E48634824EC3BE000B7A5C4 /* Default-568h@2x.png */; };
 		3E58B50324F0E799005524EA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E58B50224F0E799005524EA /* Color.swift */; };
 		3E5BECE824E4E5ED008287B7 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BECE724E4E5ED008287B7 /* Example.swift */; };
 		3E5F5B4A24F5E1AC00FC2DD6 /* SetupDetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F5B4924F5E1AC00FC2DD6 /* SetupDetailCard.swift */; };
-		3E70991924ED1F6E0076F086 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E70991724ED1F6E0076F086 /* CardTableViewCell.swift */; };
-		3E70991A24ED1F6E0076F086 /* CardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E70991824ED1F6E0076F086 /* CardTableViewCell.xib */; };
+		3E794CE024F660A1003B616A /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E794CDF24F660A1003B616A /* ListCollectionViewCell.swift */; };
+		3E794CE224F66456003B616A /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E794CE124F66456003B616A /* CardTableViewCell.swift */; };
+		3E7E4FBE24FA275A0031A0DE /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7E4FBD24FA275A0031A0DE /* UIScrollView+Extension.swift */; };
 		3E821B0624F3AD57000243F3 /* CustomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E821B0524F3AD57000243F3 /* CustomList.swift */; };
 		3E821B0924F3AE5B000243F3 /* CustomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E821B0824F3AE5B000243F3 /* CustomCard.swift */; };
 		3E821B0C24F3B03D000243F3 /* CustomCheckList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E821B0B24F3B03D000243F3 /* CustomCheckList.swift */; };
 		3E821B0F24F4D78C000243F3 /* DetailCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E821B0E24F4D78C000243F3 /* DetailCardViewController.swift */; };
+		3E9609B324F8F9E500175AAE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9609B224F8F9E500175AAE /* TableView.swift */; };
+		3E9609B524F8F9F100175AAE /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9609B424F8F9F100175AAE /* CollectionView.swift */; };
+		3E9609B824F8FA0500175AAE /* Drag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9609B724F8FA0500175AAE /* Drag.swift */; };
+		3E9609BA24F8FA0D00175AAE /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9609B924F8FA0D00175AAE /* Drop.swift */; };
+		3E9609BE24F8FB2100175AAE /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9609BD24F8FB2100175AAE /* ContextMenu.swift */; };
 		3EA2297924F1FF6900574894 /* BackgroundImageBoardCLVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2297724F1FF6900574894 /* BackgroundImageBoardCLVCell.swift */; };
 		3EA2297A24F1FF6900574894 /* BackgroundImageBoardCLVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA2297824F1FF6900574894 /* BackgroundImageBoardCLVCell.xib */; };
 		3ECC8D2424EAC97B002B6709 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECC8D2324EAC97B002B6709 /* Main.storyboard */; };
 		3ECC8D2724EAD2A0002B6709 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECC8D2624EAD2A0002B6709 /* PageViewController.swift */; };
-		3ECC8D2924EAD2C7002B6709 /* CircleProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECC8D2824EAD2C7002B6709 /* CircleProgressViewController.swift */; };
-		3ECC8D2B24EAD2D8002B6709 /* LineProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECC8D2A24EAD2D8002B6709 /* LineProgressViewController.swift */; };
-		3ED4137E24ED0EEE00F214A2 /* ListCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED4137C24ED0EEE00F214A2 /* ListCardViewController.swift */; };
 		3ED4137F24ED0EEE00F214A2 /* ListCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED4137D24ED0EEE00F214A2 /* ListCardViewController.xib */; };
-		3ED4E59824ECDD7B0052CB5E /* DetailBoardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED4E59724ECDD7B0052CB5E /* DetailBoardPageViewController.swift */; };
-		3EDA7FAF24EE189200932824 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDA7FAD24EE189200932824 /* CardViewController.swift */; };
-		3EDA7FB024EE189200932824 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDA7FAE24EE189200932824 /* CardViewController.xib */; };
 		3EDAAC9624F2057100459F17 /* BackgroundColoBoardCLVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAAC9424F2057100459F17 /* BackgroundColoBoardCLVCell.swift */; };
 		3EDAAC9724F2057100459F17 /* BackgroundColoBoardCLVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAAC9524F2057100459F17 /* BackgroundColoBoardCLVCell.xib */; };
 		3EDC36CA24F168DC009D0E00 /* CreationBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDC36C824F168DC009D0E00 /* CreationBoardViewController.swift */; };
@@ -70,27 +73,30 @@
 		3E36C52124EC33D10009C771 /* ListBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBoardViewController.swift; sourceTree = "<group>"; };
 		3E36C52324EC35FF0009C771 /* DetailBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBoardViewController.swift; sourceTree = "<group>"; };
 		3E36C52724EC382E0009C771 /* SettingBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBoardViewController.swift; sourceTree = "<group>"; };
+		3E3AEAD024FA455700221C42 /* LineProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineProgressViewController.swift; sourceTree = "<group>"; };
+		3E3AEAD124FA455700221C42 /* CircleProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressViewController.swift; sourceTree = "<group>"; };
+		3E3AEAD424FA9B8400221C42 /* ImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNames.swift; sourceTree = "<group>"; };
 		3E48634824EC3BE000B7A5C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3E58B50224F0E799005524EA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		3E5BECE724E4E5ED008287B7 /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		3E5F5B4924F5E1AC00FC2DD6 /* SetupDetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupDetailCard.swift; sourceTree = "<group>"; };
-		3E70991724ED1F6E0076F086 /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
-		3E70991824ED1F6E0076F086 /* CardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTableViewCell.xib; sourceTree = "<group>"; };
+		3E794CDF24F660A1003B616A /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E794CE124F66456003B616A /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
+		3E7E4FBD24FA275A0031A0DE /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		3E821B0524F3AD57000243F3 /* CustomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomList.swift; sourceTree = "<group>"; };
 		3E821B0824F3AE5B000243F3 /* CustomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCard.swift; sourceTree = "<group>"; };
 		3E821B0B24F3B03D000243F3 /* CustomCheckList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckList.swift; sourceTree = "<group>"; };
 		3E821B0E24F4D78C000243F3 /* DetailCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardViewController.swift; sourceTree = "<group>"; };
+		3E9609B224F8F9E500175AAE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		3E9609B424F8F9F100175AAE /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		3E9609B724F8FA0500175AAE /* Drag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drag.swift; sourceTree = "<group>"; };
+		3E9609B924F8FA0D00175AAE /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
+		3E9609BD24F8FB2100175AAE /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		3EA2297724F1FF6900574894 /* BackgroundImageBoardCLVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageBoardCLVCell.swift; sourceTree = "<group>"; };
 		3EA2297824F1FF6900574894 /* BackgroundImageBoardCLVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundImageBoardCLVCell.xib; sourceTree = "<group>"; };
 		3ECC8D2324EAC97B002B6709 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3ECC8D2624EAD2A0002B6709 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
-		3ECC8D2824EAD2C7002B6709 /* CircleProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressViewController.swift; sourceTree = "<group>"; };
-		3ECC8D2A24EAD2D8002B6709 /* LineProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineProgressViewController.swift; sourceTree = "<group>"; };
-		3ED4137C24ED0EEE00F214A2 /* ListCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCardViewController.swift; sourceTree = "<group>"; };
 		3ED4137D24ED0EEE00F214A2 /* ListCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCardViewController.xib; sourceTree = "<group>"; };
-		3ED4E59724ECDD7B0052CB5E /* DetailBoardPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBoardPageViewController.swift; sourceTree = "<group>"; };
-		3EDA7FAD24EE189200932824 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
-		3EDA7FAE24EE189200932824 /* CardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		3EDAAC9424F2057100459F17 /* BackgroundColoBoardCLVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColoBoardCLVCell.swift; sourceTree = "<group>"; };
 		3EDAAC9524F2057100459F17 /* BackgroundColoBoardCLVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColoBoardCLVCell.xib; sourceTree = "<group>"; };
 		3EDC36C824F168DC009D0E00 /* CreationBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationBoardViewController.swift; sourceTree = "<group>"; };
@@ -172,8 +178,6 @@
 				3EDC36C724F168B4009D0E00 /* CreationBoard */,
 				3EED45B024ECCA87009B305D /* BoardTableViewCell.xib */,
 				3ED4137D24ED0EEE00F214A2 /* ListCardViewController.xib */,
-				3E70991824ED1F6E0076F086 /* CardTableViewCell.xib */,
-				3EDA7FAE24EE189200932824 /* CardViewController.xib */,
 			);
 			path = Trello;
 			sourceTree = "<group>";
@@ -208,6 +212,7 @@
 				3E0CEA0424F0E6850079EC8F /* UIColor+Extension.swift */,
 				3E0CEA0624F0E6A40079EC8F /* UIViewController+Extension.swift */,
 				3E0CEA0824F0E6B00079EC8F /* UIView+Extension.swift */,
+				3E7E4FBD24FA275A0031A0DE /* UIScrollView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				3E5BECE724E4E5ED008287B7 /* Example.swift */,
 				3E0CE9FD24F0DB6E0079EC8F /* Database.xcdatamodeld */,
 				3E58B50224F0E799005524EA /* Color.swift */,
+				3E3AEAD424FA9B8400221C42 /* ImageNames.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,12 +296,57 @@
 			path = CreationBoard;
 			sourceTree = "<group>";
 		};
+		3E9609B024F8F9B600175AAE /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				3E794CDF24F660A1003B616A /* ListCollectionViewCell.swift */,
+				3E794CE124F66456003B616A /* CardTableViewCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		3E9609B124F8F9CE00175AAE /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				3E9609BC24F8FB0D00175AAE /* ContextMenu */,
+				3E9609BB24F8FB0300175AAE /* CollectionView */,
+				3E9609B624F8F9F600175AAE /* TableView */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		3E9609B624F8F9F600175AAE /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				3E9609B224F8F9E500175AAE /* TableView.swift */,
+				3E9609B724F8FA0500175AAE /* Drag.swift */,
+				3E9609B924F8FA0D00175AAE /* Drop.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		3E9609BB24F8FB0300175AAE /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				3E9609B424F8F9F100175AAE /* CollectionView.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		3E9609BC24F8FB0D00175AAE /* ContextMenu */ = {
+			isa = PBXGroup;
+			children = (
+				3E9609BD24F8FB2100175AAE /* ContextMenu.swift */,
+			);
+			path = ContextMenu;
+			sourceTree = "<group>";
+		};
 		3ECC8D2524EAD276002B6709 /* UIPageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3E3AEAD124FA455700221C42 /* CircleProgressViewController.swift */,
+				3E3AEAD024FA455700221C42 /* LineProgressViewController.swift */,
 				3ECC8D2624EAD2A0002B6709 /* PageViewController.swift */,
-				3ECC8D2824EAD2C7002B6709 /* CircleProgressViewController.swift */,
-				3ECC8D2A24EAD2D8002B6709 /* LineProgressViewController.swift */,
 			);
 			path = UIPageViewController;
 			sourceTree = "<group>";
@@ -304,10 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				3E36C52324EC35FF0009C771 /* DetailBoardViewController.swift */,
-				3ED4E59724ECDD7B0052CB5E /* DetailBoardPageViewController.swift */,
-				3ED4137C24ED0EEE00F214A2 /* ListCardViewController.swift */,
-				3EDA7FAD24EE189200932824 /* CardViewController.swift */,
-				3E70991724ED1F6E0076F086 /* CardTableViewCell.swift */,
+				3E9609B124F8F9CE00175AAE /* Delegates */,
+				3E9609B024F8F9B600175AAE /* CustomCell */,
 			);
 			path = DetailBoard;
 			sourceTree = "<group>";
@@ -411,9 +460,7 @@
 			files = (
 				3EA2297A24F1FF6900574894 /* BackgroundImageBoardCLVCell.xib in Resources */,
 				3EDAAC9724F2057100459F17 /* BackgroundColoBoardCLVCell.xib in Resources */,
-				3EDA7FB024EE189200932824 /* CardViewController.xib in Resources */,
 				3ECC8D2424EAC97B002B6709 /* Main.storyboard in Resources */,
-				3E70991A24ED1F6E0076F086 /* CardTableViewCell.xib in Resources */,
 				3E48634924EC3BE000B7A5C4 /* Default-568h@2x.png in Resources */,
 				3EDC36CD24F16C46009D0E00 /* CreationBoardViewController.xib in Resources */,
 				3ED4137F24ED0EEE00F214A2 /* ListCardViewController.xib in Resources */,
@@ -472,12 +519,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E3AEAD524FA9B8400221C42 /* ImageNames.swift in Sources */,
 				3E3520BB24E2713F00AF5FFD /* ViewController.swift in Sources */,
-				3ED4E59824ECDD7B0052CB5E /* DetailBoardPageViewController.swift in Sources */,
+				3E794CE224F66456003B616A /* CardTableViewCell.swift in Sources */,
 				3E821B0924F3AE5B000243F3 /* CustomCard.swift in Sources */,
+				3E9609B824F8FA0500175AAE /* Drag.swift in Sources */,
 				3E3520B724E2713F00AF5FFD /* AppDelegate.swift in Sources */,
+				3E7E4FBE24FA275A0031A0DE /* UIScrollView+Extension.swift in Sources */,
+				3E3AEAD224FA455700221C42 /* LineProgressViewController.swift in Sources */,
+				3E9609BA24F8FA0D00175AAE /* Drop.swift in Sources */,
 				3E0CEA0724F0E6A40079EC8F /* UIViewController+Extension.swift in Sources */,
 				3E821B0F24F4D78C000243F3 /* DetailCardViewController.swift in Sources */,
+				3E9609BE24F8FB2100175AAE /* ContextMenu.swift in Sources */,
 				3EED45B124ECCA87009B305D /* BoardTableViewCell.swift in Sources */,
 				3ECC8D2724EAD2A0002B6709 /* PageViewController.swift in Sources */,
 				3E0CEA0524F0E6850079EC8F /* UIColor+Extension.swift in Sources */,
@@ -485,12 +538,12 @@
 				3EE0850424EA5F9A007455E8 /* LineProgressView.swift in Sources */,
 				3E821B0624F3AD57000243F3 /* CustomList.swift in Sources */,
 				3EDAAC9624F2057100459F17 /* BackgroundColoBoardCLVCell.swift in Sources */,
-				3EDA7FAF24EE189200932824 /* CardViewController.swift in Sources */,
-				3ED4137E24ED0EEE00F214A2 /* ListCardViewController.swift in Sources */,
+				3E3AEAD324FA455700221C42 /* CircleProgressViewController.swift in Sources */,
 				3E21D48424F3A584005EFE2C /* CustomBoard.swift in Sources */,
 				3E36C52824EC382E0009C771 /* SettingBoardViewController.swift in Sources */,
 				3E3520B924E2713F00AF5FFD /* SceneDelegate.swift in Sources */,
-				3ECC8D2924EAD2C7002B6709 /* CircleProgressViewController.swift in Sources */,
+				3E9609B524F8F9F100175AAE /* CollectionView.swift in Sources */,
+				3E794CE024F660A1003B616A /* ListCollectionViewCell.swift in Sources */,
 				3EF5FC7024E3C1E9008D56A0 /* String+Extensions.swift in Sources */,
 				3E0CEA0924F0E6B00079EC8F /* UIView+Extension.swift in Sources */,
 				3E58B50324F0E799005524EA /* Color.swift in Sources */,
@@ -498,10 +551,9 @@
 				3E0CE9FF24F0DB6E0079EC8F /* Database.xcdatamodeld in Sources */,
 				3E36C52224EC33D10009C771 /* ListBoardViewController.swift in Sources */,
 				3EE0850124EA5F62007455E8 /* ProgressingViewController.swift in Sources */,
-				3E70991924ED1F6E0076F086 /* CardTableViewCell.swift in Sources */,
-				3ECC8D2B24EAD2D8002B6709 /* LineProgressViewController.swift in Sources */,
 				3E36C52424EC35FF0009C771 /* DetailBoardViewController.swift in Sources */,
 				3E5F5B4A24F5E1AC00FC2DD6 /* SetupDetailCard.swift in Sources */,
+				3E9609B324F8F9E500175AAE /* TableView.swift in Sources */,
 				3EDC36CA24F168DC009D0E00 /* CreationBoardViewController.swift in Sources */,
 				3E5BECE824E4E5ED008287B7 /* Example.swift in Sources */,
 				3EE0850524EA5F9A007455E8 /* CircularProgressView.swift in Sources */,

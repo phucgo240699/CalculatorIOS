@@ -9,18 +9,17 @@
 import UIKit
 
 class ProgressingViewController: UIViewController {
+    
     @IBOutlet weak var pageView: UIView!
     
     let pageVC = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     var cp: CircularProgressView?
-
     var line: LineProgressView?
     
     var timer: Timer?
     var logicline1:Bool = true
     var logicCircle1: Bool = true
-    
     var toggleGradient:Bool = true
     
     @IBOutlet weak var startBtnPressed: UIButton!
@@ -70,47 +69,75 @@ class ProgressingViewController: UIViewController {
         }
     }
     
-    func setUpCircle(_ frame: CGRect){
-        cp = CircularProgressView(frame: CGRect(x: frame.width * 0.2, y: frame.height/8, width: frame.width * 0.5, height: frame.width * 0.5))
+    func setUpCircle(_ parentView: UIView){
+        cp = CircularProgressView(frame: CGRect(x: 0, y: 0, width: parentView.bounds.width * 0.5, height: parentView.bounds.width * 0.5))
         
         guard let cp = cp else {
             return
         }
         
+        parentView.addSubview(cp)
         cp.trackLayer.strokeEnd = 0.0
         cp.progressColor = UIColor.lightGray
         
+        cp.translatesAutoresizingMaskIntoConstraints = false
+        cp.widthAnchor.constraint(equalToConstant: parentView.bounds.width * 0.5).isActive = true
+        cp.heightAnchor.constraint(equalToConstant: parentView.bounds.width * 0.5).isActive = true
+        cp.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
+        cp.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
     }
     
-    func setUpLine(_ frame: CGRect){
-        line = LineProgressView(frame: CGRect(x: frame.width * 0.06, y: frame.height/4, width: frame.width * 0.8, height: view.frame.width * 0.05))
+    func setUpLine(_ parentView: UIView){
+        line = LineProgressView(frame: CGRect(x: parentView.bounds.width * 0.05, y: 0, width: parentView.bounds.width * 0.9, height: parentView.bounds.width * 0.04))
         
         
         guard let line = line else {
             return
         }
         
+        parentView.addSubview(line)
         line.trackLayer.strokeEnd = 0.0
         line.backgroundColor = UIColor.lightGray
+        
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.widthAnchor.constraint(equalToConstant: parentView.bounds.width * 0.9).isActive = true
+        line.heightAnchor.constraint(equalToConstant: parentView.bounds.width * 0.04).isActive = true
+        line.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
+        line.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
         
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let widthView = view.bounds.width
+        let heightView = view.bounds.height
+        var edgeSize:CGFloat = widthView
+        if widthView < heightView {
+            edgeSize = widthView * 0.8
+        }
+        else {
+            edgeSize = heightView * 0.7
+        }
+        
+        pageView.translatesAutoresizingMaskIntoConstraints = false
+        pageView.widthAnchor.constraint(equalToConstant: edgeSize).isActive = true
+        pageView.heightAnchor.constraint(equalToConstant: edgeSize).isActive = true
+        pageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        pageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+                
         toggleGradient = true
-        let width = pageView.bounds.width
-        let height = pageView.frame.height
-        pageVC.view.frame.size = CGSize(width: width, height: height * 1.1)
-        pageVC.view.frame.origin = CGPoint(x: 0.0, y: 0.0)
+        
         pageView.addSubview(pageVC.view)
+        pageVC.view.translatesAutoresizingMaskIntoConstraints = false
+        pageVC.view.widthAnchor.constraint(equalToConstant: pageView.bounds.width).isActive = true
+        pageVC.view.heightAnchor.constraint(equalToConstant: pageView.bounds.width).isActive = true
+        pageVC.view.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        pageVC.view.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        setUpCircle(pageVC.subViewControllers[0].view.bounds)
-        setUpLine(pageVC.subViewControllers[1].view.bounds)
         
-        pageVC.subViewControllers.first?.view.addSubview(cp!)
-        pageVC.subViewControllers[1].view.addSubview(line!)
-        
-
+        setUpCircle(pageVC.subViewControllers[0].view)
+        setUpLine(pageVC.subViewControllers[1].view)
         
     }
 }

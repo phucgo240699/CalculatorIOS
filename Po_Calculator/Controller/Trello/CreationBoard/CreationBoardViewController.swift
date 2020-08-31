@@ -45,8 +45,8 @@ class CreationBoardViewController: UIViewController {
     var newThumbnail: String?
     
     // Properties
-    var listImageBackground: [String] = ["heart", "calendar", "trash", "tray", "doc"]
-    var listColorBackground : [Color] = [.red, .pink, .organe, .yellow, .green, .blue, .purple, .silver]
+    var listImageBackground: [String] = Image.names
+    var listColorBackground : [Color] = ListColor.colors
     
     var selectedBackgroundIndex: IndexPath?
     var selectedColorIndex: IndexPath?
@@ -131,7 +131,7 @@ extension CreationBoardViewController: UICollectionViewDelegate, UICollectionVie
         // Background image
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "BackgroundImageBoardCell", for: indexPath) as! BackgroundImageBoardCLVCell)
         cell.contentView.layer.cornerRadius = cell.bounds.width * 0.08
-        cell.backgroundImg.image = UIImage(systemName: listImageBackground[row])
+        cell.backgroundImg.image = UIImage(named: listImageBackground[row])
         cell.layer.borderColor = UIColor.lightGray.cgColor
             
         if isFirstLookAtBackgroundCollectionView { //Default highlighted

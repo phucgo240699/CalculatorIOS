@@ -68,3 +68,8 @@ enum Color {
     }
         
 }
+
+
+class ListColor {
+    static let colors: [Color] = [.red, .pink, .organe, .yellow, .green, .blue, .purple, .silver]
+}

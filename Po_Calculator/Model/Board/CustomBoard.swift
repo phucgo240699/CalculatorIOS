@@ -16,17 +16,50 @@ class CustomBoard {
 
     func addBoard(thumbnail: String, title: String) {
         do {
-            let numbersOfBoard = try context.fetch(Board.fetchRequest()).count
+            let request: NSFetchRequest = Board.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
+            
+            let boards: [Board] = try context.fetch(request)
+            let count = boards.count
             
             let newBoard = Board(context: context)
             newBoard.thumbnail = thumbnail
             newBoard.title = title
-            newBoard.id = Int64(numbersOfBoard)
+            newBoard.id = count > 0 ? boards[count-1].id + 1 : 0
         
             try context.save()
         } catch {
             print(error)
         }
+    }
+    
+    func getBoardById (id: Int64) -> Board? {
+        do {
+            let request: NSFetchRequest = Board.fetchRequest()
+            let predicate: NSPredicate = NSPredicate(format: "id == %@", id)
+            request.predicate = predicate
+            
+            return (try context.fetch(request))[0]
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    func getBoard(by index: Int) -> Board? {
+        var board: Board?
+        do {
+            let request: NSFetchRequest = Board.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
+            board = (try context.fetch(request))[index]
+            
+        } catch {
+            print(error)
+        }
+
+        return board
     }
     
     func getBoardsSorting(by field: String, ascending: Bool) -> [Board] {
@@ -44,10 +77,14 @@ class CustomBoard {
     
     func updateBoard(index: Int, thumbnail: String, title: String){
         do {
-            let boards: [Board] = try context.fetch(Board.fetchRequest())
+            let request: NSFetchRequest = Board.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
             
-            boards[index].thumbnail = thumbnail
-            boards[index].title = title
+            let board: Board = (try context.fetch(request))[index]
+            
+            board.thumbnail = thumbnail
+            board.title = title
             
             try context.save()
         } catch {
@@ -57,11 +94,14 @@ class CustomBoard {
     
     func deleteBoard(index: Int){
         do {
-            let boards: [Board] = try context.fetch(Board.fetchRequest())
+            let request: NSFetchRequest = Board.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
+            let board: Board = (try context.fetch(request))[index]
             
             // Scan List
             let requestList: NSFetchRequest = List.fetchRequest()
-            requestList.predicate = NSPredicate(format: "board == %@", boards[index])
+            requestList.predicate = NSPredicate(format: "board == %@", board )
             let listsOfBoard = try context.fetch(requestList)
             
             for list in listsOfBoard {
@@ -70,13 +110,11 @@ class CustomBoard {
                 requestCard.predicate = NSPredicate(format: "list == %@", list)
                 let cardsOfList = try context.fetch(requestCard)
                 
-                
                 for card in cardsOfList {
                     // Scan CheckList
                     let requestCheckList: NSFetchRequest = CheckList.fetchRequest()
                     requestCheckList.predicate = NSPredicate(format: "card == %@", card)
                     let checkListsOfCard = try context.fetch(requestCheckList)
-                    
                     
                     for checkList in checkListsOfCard {
                         context.delete(checkList)
@@ -87,23 +125,33 @@ class CustomBoard {
             }
             
             // Delete Board
-            context.delete(boards[index])
+            context.delete(board)
             
             try context.save()
         } catch {
             print(error)
         }
-        
     }
     
     func swapBoardID(fromIndex: Int, toIndex: Int) {
         do {
-            let boards: [Board] = try context.fetch(Board.fetchRequest())
-            let fromId = boards[fromIndex].id
-            let toId = boards[toIndex].id
+            let request1: NSFetchRequest = Board.fetchRequest()
+            let sortDescriptor1 = NSSortDescriptor(key: "id", ascending: true)
+            request1.sortDescriptors = [sortDescriptor1]
             
-            boards[fromIndex].id = toId
-            boards[toIndex].id = fromId
+            let request2: NSFetchRequest = Board.fetchRequest()
+            let sortDescriptor2 = NSSortDescriptor(key: "id", ascending: true)
+            request2.sortDescriptors = [sortDescriptor2]
+            
+            
+            
+            let sourceBoard = try context.fetch(request1)[fromIndex]
+            let desBoard = try context.fetch(request2)[toIndex]
+            
+            let tempId = sourceBoard.id
+            sourceBoard.id = desBoard.id
+            desBoard.id = tempId
+            
         
             try context.save()
         } catch {

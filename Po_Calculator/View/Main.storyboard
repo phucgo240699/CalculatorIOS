@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,7 +41,7 @@
                             </tableView>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1JN-JW-etq">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -103,48 +102,19 @@
                         <viewLayoutGuide key="safeArea" id="Boq-jm-Gxb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail Board" largeTitleDisplayMode="always" id="Q9i-Og-6ZG">
-                        <rightBarButtonItems>
-                            <barButtonItem image="gear" catalog="system" id="E6e-BY-ILz">
-                                <connections>
-                                    <segue destination="0WN-mj-0ch" kind="show" identifier="gotoSetting" id="cv7-CK-Y0N"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Edit" id="5oe-4j-goT">
-                                <connections>
-                                    <action selector="editBtnPressed:" destination="Tfy-dD-Vdw" id="OJR-sS-7C1"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="plus" catalog="system" id="95W-KH-g35">
-                                <connections>
-                                    <action selector="addListBtnPressed:" destination="Tfy-dD-Vdw" id="EBS-xe-ZjI"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="95W-KH-g35">
+                            <connections>
+                                <action selector="addBtnPressed:" destination="Tfy-dD-Vdw" id="wHn-Fz-F4o"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editBtn" destination="5oe-4j-goT" id="KBc-FI-pIb"/>
-                        <segue destination="ZQz-nF-fss" kind="show" identifier="gotoDetailCard" id="Aef-HB-pQA"/>
+                        <segue destination="0WN-mj-0ch" kind="presentation" identifier="gotoSetting" modalPresentationStyle="pageSheet" id="0we-Bk-fyo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Smr-0H-UZb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="1162"/>
-        </scene>
-        <!--Detail Card-->
-        <scene sceneID="pa7-8r-DLb">
-            <objects>
-                <viewController storyboardIdentifier="detailCard" id="ZQz-nF-fss" customClass="DetailCardViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="81J-fd-fVy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="HRs-be-Va2"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Detail Card" id="7sQ-tA-fhX"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="noy-L7-PJv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="849" y="1162"/>
+            <point key="canvasLocation" x="73.913043478260875" y="1161.8303571428571"/>
         </scene>
         <!--Setting-->
         <scene sceneID="GnD-tu-5or">
@@ -157,7 +127,7 @@
                         <viewLayoutGuide key="safeArea" id="cwh-rZ-5DF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="6Ha-GO-7zK">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="4IE-4t-DBQ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="4IE-4t-DBQ"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yTN-Q4-WN4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -183,20 +153,14 @@
                                     <action selector="startBtn:" destination="Adp-PY-VA5" eventType="touchUpInside" id="9Rg-g5-pfm"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3Y-8w-ymx">
-                                <rect key="frame" x="20.5" y="118" width="373" height="372.5"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="W3Y-8w-ymx" secondAttribute="height" multiplier="1:1" id="cnT-an-Z7W"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3Y-8w-ymx">
+                                <rect key="frame" x="20.5" y="261.5" width="373" height="373"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="W3Y-8w-ymx" firstAttribute="centerX" secondItem="02V-iN-nUt" secondAttribute="centerX" id="9gS-eZ-4eD"/>
-                            <constraint firstItem="W3Y-8w-ymx" firstAttribute="top" secondItem="Jl4-FD-Z5u" secondAttribute="top" constant="30" id="PAn-Ar-LEf"/>
                             <constraint firstItem="Jl4-FD-Z5u" firstAttribute="bottom" secondItem="hIh-1b-Mrg" secondAttribute="bottom" constant="20" id="QGK-q4-hkL"/>
-                            <constraint firstItem="W3Y-8w-ymx" firstAttribute="width" secondItem="02V-iN-nUt" secondAttribute="width" multiplier="0.9" id="TzO-PI-XDf"/>
                             <constraint firstItem="hIh-1b-Mrg" firstAttribute="width" secondItem="02V-iN-nUt" secondAttribute="width" multiplier="0.3" id="YZi-Gg-Plg"/>
                             <constraint firstItem="hIh-1b-Mrg" firstAttribute="centerX" secondItem="02V-iN-nUt" secondAttribute="centerX" id="fQx-Fz-ykr"/>
                         </constraints>
@@ -220,42 +184,6 @@
             </objects>
             <point key="canvasLocation" x="-742" y="427"/>
         </scene>
-        <!--Detail Board Collection View Controller-->
-        <scene sceneID="cha-SD-lhh">
-            <objects>
-                <collectionViewController id="H5O-7n-hh1" customClass="DetailBoardCollectionViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oCb-y2-dlE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Te9-rt-kSk">
-                            <size key="itemSize" width="64" height="64"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bEG-cC-g5v">
-                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2hf-F5-m08">
-                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                                <size key="customSize" width="64" height="64"/>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="H5O-7n-hh1" id="tAj-XA-e0m"/>
-                            <outlet property="delegate" destination="H5O-7n-hh1" id="nkD-IM-DDF"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="Tqm-xZ-rUD"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N69-bq-pIa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="72" y="486"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -273,7 +201,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aH-90-SzF">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="223"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -561,11 +489,11 @@
             </objects>
             <point key="canvasLocation" x="-1542" y="-286"/>
         </scene>
-        <!--Progressing-->
+        <!--Navigation Controller-->
         <scene sceneID="G5Q-gs-1RX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SXq-7u-QtS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Progressing" id="NE7-Wz-rFq"/>
+                    <tabBarItem key="tabBarItem" title="" image="goforward" catalog="system" id="NE7-Wz-rFq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ten-Ys-Cz6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -604,7 +532,7 @@
     <resources>
         <image name="calculator-icon" width="32" height="32"/>
         <image name="eye" catalog="system" width="128" height="81"/>
-        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="goforward" catalog="system" width="121" height="128"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="NavigationBarTintColor">

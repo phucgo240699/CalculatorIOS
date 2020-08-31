@@ -16,17 +16,39 @@ class CustomList {
 
     func addList(name: String, board: Board) {
         do {
-            let numbersOfList = try context.fetch(List.fetchRequest()).count
+            let request: NSFetchRequest = List.fetchRequest()
+            let predicate: NSPredicate = NSPredicate(format: "board == %@", board)
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.predicate = predicate
+            request.sortDescriptors = [sortDescriptor]
+            
+            let lists = try context.fetch(request)
+            let count = lists.count
             
             let newList = List(context: context)
             newList.name = name
-            newList.id = Int64(numbersOfList)
+            newList.id = count > 0 ? lists[count - 1].id + 1: 0
             newList.board = board
         
             try context.save()
         } catch {
             print(error)
         }
+    }
+    
+    func getList(board: Board, by index: Int) -> List? {
+        var list: List?
+        do {
+            let request: NSFetchRequest = List.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
+            list = (try context.fetch(request))[index]
+            
+        } catch {
+            print(error)
+        }
+        
+        return list
     }
     
     func getListsSorting(board: Board, by field: String, ascending: Bool) -> [List] {
@@ -44,11 +66,18 @@ class CustomList {
         return []
     }
     
-    func updateList(index: Int, name: String){
+    func updateList(index: Int, board: Board, name: String){
         do {
-            let lists: [List] = try context.fetch(List.fetchRequest())
+            let request: NSFetchRequest = List.fetchRequest()
+            let predicate: NSPredicate = NSPredicate(format: "board == %@", board)
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
             
-            lists[index].name = name
+            request.sortDescriptors = [sortDescriptor]
+            request.predicate = predicate
+            
+            let list: List = try context.fetch(request)[index]
+            
+            list.name = name
             
             try context.save()
         } catch {
@@ -56,13 +85,19 @@ class CustomList {
         }
     }
     
-    func deleteList(index: Int){
+    func deleteList(index: Int, board: Board){
         do {
-            let lists: [List] = try context.fetch(List.fetchRequest())
+            let request: NSFetchRequest = List.fetchRequest()
+            let predicate: NSPredicate = NSPredicate(format: "board == %@", board)
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescriptor]
+            request.predicate = predicate
+            
+            let list: List = try context.fetch(request)[index]
             
             // Scan Card
             let requestCard: NSFetchRequest = Card.fetchRequest()
-            requestCard.predicate = NSPredicate(format: "list == %@", lists[index])
+            requestCard.predicate = NSPredicate(format: "list == %@", list)
             let cardsOfList = try context.fetch(requestCard)
             
             for card in cardsOfList {
@@ -78,7 +113,7 @@ class CustomList {
             }
             
             // Delete List
-            context.delete(lists[index])
+            context.delete(list)
             
             try context.save()
         } catch {
@@ -86,19 +121,24 @@ class CustomList {
         }
     }
     
-    func swapListID(fromIndex: Int, toIndex: Int) {
-        do {
-            let lists: [List] = try context.fetch(List.fetchRequest())
-            let fromId = lists[fromIndex].id
-            let toId = lists[toIndex].id
-            
-            lists[fromIndex].id = toId
-            lists[toIndex].id = fromId
-        
-            try context.save()
-        } catch {
-            print(error)
-        }
-    }
+//    func swapListID(fromIndex: Int, toIndex: Int, board: Board) {
+//        do {
+//
+//            let request1: NSFetchRequest = List.fetchRequest()
+//            let pre1: NSPredicate = NSPredicate(format: "board == %@", board)
+//            let sortDescriptor1 = NSSortDescriptor(key: "id", ascending: true)
+//
+//            request1.sortDescriptors = [sortDescriptor1]
+//            request1.predicate = pre1
+//
+//
+//
+//
+//
+//            try context.save()
+//        } catch {
+//            print(error)
+//        }
+//    }
 }
 

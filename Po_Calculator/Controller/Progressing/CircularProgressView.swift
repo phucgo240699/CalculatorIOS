@@ -18,7 +18,7 @@ class CircularProgressView: UIView {
         super.init(frame: frame)
         createCircularPath()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         createCircularPath()
@@ -37,7 +37,7 @@ class CircularProgressView: UIView {
     }
     
     
-    fileprivate func createCircularPath() {
+    func createCircularPath() {
         self.backgroundColor = UIColor.clear
         self.layer.cornerRadius = frame.width/2
         let width = frame.width
@@ -74,5 +74,5 @@ class CircularProgressView: UIView {
         
         layer.addSublayer(gradientLayer)
     }
-
+    
 }

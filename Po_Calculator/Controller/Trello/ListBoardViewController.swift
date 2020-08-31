@@ -67,7 +67,7 @@ extension ListBoardViewController: UITableViewDelegate, UITableViewDataSource {
         
         if thumbnail.toColor() == .black {
             cell.thumbnail.backgroundColor = UIColor.clear
-            cell.thumbnail.image = UIImage(systemName: thumbnail)
+            cell.thumbnail.image = UIImage(named: thumbnail)
         }
         else {
             cell.thumbnail.image = nil
@@ -146,6 +146,9 @@ extension ListBoardViewController : UISearchBarDelegate {
 
 // Functions support
 extension ListBoardViewController {
+    func setUpFontSize() {
+        
+    }
     
     @objc func refresh(_ sender: AnyObject) {
         boards = CustomBoard.shared.getBoardsSorting(by: "id", ascending: true)

@@ -7,4 +7,5 @@ target 'Po_Calculator' do
 
   # Pods for Po_Calculator
 pod 'IQKeyboardManagerSwift'
+pod 'SnapKit'
 end
