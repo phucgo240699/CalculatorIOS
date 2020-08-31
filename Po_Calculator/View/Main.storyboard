@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,36 +19,120 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Pnl-6R-VuT"/>
-                        <segue destination="BRH-DR-QW1" kind="relationship" relationship="viewControllers" id="nP8-Pb-9V7"/>
                         <segue destination="SXq-7u-QtS" kind="relationship" relationship="viewControllers" id="xKc-6f-miu"/>
+                        <segue destination="1II-aa-q1e" kind="relationship" relationship="viewControllers" id="HFQ-ge-o5N"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVQ-r0-Lk2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2328" y="427"/>
         </scene>
-        <!--Example View Controller-->
-        <scene sceneID="Jnq-5L-9N4">
+        <!--Boards-->
+        <scene sceneID="nJc-MB-yiS">
             <objects>
-                <viewController id="AKV-ae-FAB" customClass="ExampleViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Jhd-z6-No4"/>
+                <viewController id="jnL-S1-GeX" customClass="ListBoardViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1qV-0j-Cbv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lrf-ZN-MTF">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1JN-JW-etq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Lrf-ZN-MTF" firstAttribute="leading" secondItem="IRG-5X-0L6" secondAttribute="leading" id="EtN-wi-97k"/>
+                            <constraint firstItem="1JN-JW-etq" firstAttribute="leading" secondItem="IRG-5X-0L6" secondAttribute="leading" id="HLa-4k-JCA"/>
+                            <constraint firstItem="Lrf-ZN-MTF" firstAttribute="trailing" secondItem="IRG-5X-0L6" secondAttribute="trailing" id="Hle-8e-rzs"/>
+                            <constraint firstItem="1JN-JW-etq" firstAttribute="trailing" secondItem="IRG-5X-0L6" secondAttribute="trailing" id="Owt-cd-fPH"/>
+                            <constraint firstItem="Lrf-ZN-MTF" firstAttribute="bottom" secondItem="IRG-5X-0L6" secondAttribute="bottom" id="Wiu-zJ-01t"/>
+                            <constraint firstItem="Lrf-ZN-MTF" firstAttribute="top" secondItem="1JN-JW-etq" secondAttribute="bottom" id="ZZc-yN-QNl"/>
+                            <constraint firstItem="1JN-JW-etq" firstAttribute="top" secondItem="IRG-5X-0L6" secondAttribute="top" id="nun-at-aG6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IRG-5X-0L6"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Boards" id="66c-zR-AMA">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="9Tb-ql-3J8">
+                                <connections>
+                                    <action selector="addBtnPressed:" destination="jnL-S1-GeX" id="A3f-Sj-UeT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="rV9-Si-fvI">
+                                <connections>
+                                    <action selector="editBtnPressed:" destination="jnL-S1-GeX" id="3qS-0z-fKq"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
-                        <segue destination="Bhp-GY-eKD" kind="show" identifier="moveToDetailExample" id="Me3-SW-j52"/>
+                        <outlet property="editBtn" destination="rV9-Si-fvI" id="M6u-E6-rLI"/>
+                        <outlet property="searchBar" destination="1JN-JW-etq" id="Vsc-eh-k1X"/>
+                        <outlet property="tableView" destination="Lrf-ZN-MTF" id="c5n-Mz-CfA"/>
+                        <segue destination="Tfy-dD-Vdw" kind="show" identifier="gotoDetailBoard" id="nd2-tw-uyg"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zXY-EU-xEa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xqp-ax-OQL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1542" y="1168"/>
+            <point key="canvasLocation" x="-742" y="1162"/>
         </scene>
-        <!--Detail Examle-->
-        <scene sceneID="ih4-Uj-iKT">
+        <!--Creation Card Board-->
+        <scene sceneID="Xr3-er-JcW">
             <objects>
-                <viewController storyboardIdentifier="DetailExample" id="Bhp-GY-eKD" customClass="DetailExampleViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Detail Examle" id="dO7-Zj-MTO"/>
+                <viewController id="jQy-FK-cM0" customClass="CreationBoardViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Creation Card Board" id="d2u-tF-HHA"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VkR-0F-bQH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gyR-UV-cm7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-741" y="1168"/>
+            <point key="canvasLocation" x="-742" y="1908"/>
+        </scene>
+        <!--Detail Board-->
+        <scene sceneID="7rc-nE-79H">
+            <objects>
+                <viewController id="Tfy-dD-Vdw" customClass="DetailBoardViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lx3-ox-Cls">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Boq-jm-Gxb"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail Board" largeTitleDisplayMode="always" id="Q9i-Og-6ZG">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="95W-KH-g35">
+                            <connections>
+                                <action selector="addBtnPressed:" destination="Tfy-dD-Vdw" id="wHn-Fz-F4o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="0WN-mj-0ch" kind="presentation" identifier="gotoSetting" modalPresentationStyle="pageSheet" id="0we-Bk-fyo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Smr-0H-UZb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="73.913043478260875" y="1161.8303571428571"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="GnD-tu-5or">
+            <objects>
+                <viewController id="0WN-mj-0ch" customClass="SettingBoardViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="82n-gK-Sd8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="cwh-rZ-5DF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Setting" id="6Ha-GO-7zK">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="4IE-4t-DBQ"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yTN-Q4-WN4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="1908"/>
         </scene>
         <!--Item-->
         <scene sceneID="Q7G-KH-IIo">
@@ -68,20 +153,14 @@
                                     <action selector="startBtn:" destination="Adp-PY-VA5" eventType="touchUpInside" id="9Rg-g5-pfm"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3Y-8w-ymx">
-                                <rect key="frame" x="20.5" y="118" width="373" height="372.5"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="W3Y-8w-ymx" secondAttribute="height" multiplier="1:1" id="cnT-an-Z7W"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3Y-8w-ymx">
+                                <rect key="frame" x="20.5" y="261.5" width="373" height="373"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="W3Y-8w-ymx" firstAttribute="centerX" secondItem="02V-iN-nUt" secondAttribute="centerX" id="9gS-eZ-4eD"/>
-                            <constraint firstItem="W3Y-8w-ymx" firstAttribute="top" secondItem="Jl4-FD-Z5u" secondAttribute="top" constant="30" id="PAn-Ar-LEf"/>
                             <constraint firstItem="Jl4-FD-Z5u" firstAttribute="bottom" secondItem="hIh-1b-Mrg" secondAttribute="bottom" constant="20" id="QGK-q4-hkL"/>
-                            <constraint firstItem="W3Y-8w-ymx" firstAttribute="width" secondItem="02V-iN-nUt" secondAttribute="width" multiplier="0.9" id="TzO-PI-XDf"/>
                             <constraint firstItem="hIh-1b-Mrg" firstAttribute="width" secondItem="02V-iN-nUt" secondAttribute="width" multiplier="0.3" id="YZi-Gg-Plg"/>
                             <constraint firstItem="hIh-1b-Mrg" firstAttribute="centerX" secondItem="02V-iN-nUt" secondAttribute="centerX" id="fQx-Fz-ykr"/>
                         </constraints>
@@ -105,36 +184,6 @@
             </objects>
             <point key="canvasLocation" x="-742" y="427"/>
         </scene>
-        <!--Circle Progress View Controller-->
-        <scene sceneID="Dzh-9T-eOH">
-            <objects>
-                <viewController storyboardIdentifier="CircleProgressViewController" id="cmR-xD-nRn" customClass="CircleProgressViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="r3k-pm-dYR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.22300433394360819" green="0.27415955884567478" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="RFv-lv-tes"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pPc-07-ugG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="887" y="427"/>
-        </scene>
-        <!--Line Progress View Controller-->
-        <scene sceneID="QWp-6C-Usj">
-            <objects>
-                <viewController storyboardIdentifier="LineProgressViewController" id="F4g-aZ-MiB" customClass="LineProgressViewController" customModule="Po_Calculator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oEr-ky-3Vh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.23965334627591287" green="0.33451470414999174" blue="0.11266081295581615" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="8om-Xa-SBe"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JM7-aj-J8V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1625" y="428"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -152,7 +201,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aH-90-SzF">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="223"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -440,30 +489,11 @@
             </objects>
             <point key="canvasLocation" x="-1542" y="-286"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="e8a-Y2-ASt">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BRH-DR-QW1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="d1Y-bx-kQV"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xWf-OK-CBE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="AKV-ae-FAB" kind="relationship" relationship="rootViewController" id="IFO-zy-zG4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B4C-rJ-PMM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2329" y="1168"/>
-        </scene>
-        <!--Progressing-->
+        <!--Navigation Controller-->
         <scene sceneID="G5Q-gs-1RX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SXq-7u-QtS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Progressing" id="NE7-Wz-rFq"/>
+                    <tabBarItem key="tabBarItem" title="" image="goforward" catalog="system" id="NE7-Wz-rFq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ten-Ys-Cz6">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -478,9 +508,35 @@
             </objects>
             <point key="canvasLocation" x="-1542" y="428"/>
         </scene>
+        <!--Trello-->
+        <scene sceneID="8pA-1b-EbR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1II-aa-q1e" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Trello" image="list.dash" catalog="system" id="f2q-Np-mAO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T8e-wb-dkr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="NavigationBarTintColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jnL-S1-GeX" kind="relationship" relationship="rootViewController" id="0xl-3o-Xqb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vkQ-dI-TJX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1542" y="1162"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calculator-icon" width="32" height="32"/>
         <image name="eye" catalog="system" width="128" height="81"/>
+        <image name="goforward" catalog="system" width="121" height="128"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="NavigationBarTintColor">
+            <color red="0.71799999475479126" green="0.92900002002716064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
