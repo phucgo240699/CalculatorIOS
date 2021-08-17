@@ -716,7 +716,7 @@
 			baseConfigurationReference = DE6119362A25DAAFC4915DBD /* Pods-Po_Calculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = VXWH8X93WN;
@@ -728,7 +728,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.phucly.Po-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Po_Calculator_Appstore;
+				PROVISIONING_PROFILE_SPECIFIER = Po_Calculator_AdHoc;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
