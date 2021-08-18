@@ -104,7 +104,6 @@ class ProgressingViewController: UIViewController {
         line.heightAnchor.constraint(equalToConstant: parentView.bounds.width * 0.04).isActive = true
         line.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
         line.centerYAnchor.constraint(equalTo: parentView.centerYAnchor).isActive = true
-        
     }
 
     override func viewDidLoad() {
